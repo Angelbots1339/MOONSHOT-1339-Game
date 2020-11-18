@@ -1,4 +1,3 @@
-
 # Godot-specific ignores
 .import/
 
@@ -17,4 +16,5 @@ mono_crash.*.json
 # Plugin specific ignores
 screenshots/
 
-
+# .csproj file ignore (If this file is missing you have to build locally)
+.csproj
