@@ -22,8 +22,12 @@ public class movement : RigidBody2D
 	public void MoveToGrav()
 	{
 		Node planets = GetParent().GetNode("planets");
-		foreach(Node planet in planets.GetChildren()){
-			force += planet;
+		foreach(Gravity planet in planets.GetChildren()){
+			GD.Print(planet.Name);
+			GD.Print(planet.GetGravity());
+			GD.Print(planet.GlobalPosition);
+			GD.Print(this.GlobalPosition);
+			force = force.MoveToward(planet.GlobalPosition - this.GlobalPosition, planet.gravityForce);
 		}
 	}
 
@@ -32,6 +36,7 @@ public class movement : RigidBody2D
 		force = new Vector2();
 		GetInput();
 		MoveToGrav();
+		GD.Print(force);
 		ApplyCentralImpulse(force);
 	}
 }
