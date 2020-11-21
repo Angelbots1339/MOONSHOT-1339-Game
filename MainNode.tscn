@@ -10,6 +10,11 @@ height = 0.0
 
 [node name="Node2D" type="Node2D"]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2( 510, 300 )
+current = true
+zoom = Vector2( 3, 3 )
+
 [node name="planets" type="Node2D" parent="."]
 
 [node name="Planet1" parent="planets" instance=ExtResource( 3 )]
