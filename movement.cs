@@ -26,7 +26,8 @@ public class movement : RigidBody2D
         foreach (Gravity planet in planets.GetChildren())
         {
 			var outsideness = (planet.GlobalPosition - this.GlobalPosition).Length()/planet.gravityForce;
-            if((planet.GlobalPosition - this.GlobalPosition).Length() <= planet.gravityForce) force += (planet.GlobalPosition - this.GlobalPosition).Normalized() * (10+10/outsideness);
+            var distanceVector = planet.GlobalPosition - this.GlobalPosition;
+            if(distanceVector.Length() <= planet.gravityForce) force += distanceVector.Normalized() * (10+10/outsideness);
         }
     }
 

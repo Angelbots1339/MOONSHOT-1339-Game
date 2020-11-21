@@ -17,6 +17,7 @@ position = Vector2( 300, 100 )
 gravityForce = 200.0
 
 [node name="Planet2" parent="planets" instance=ExtResource( 3 )]
+position = Vector2( 544.617, 269.005 )
 gravityForce = 150.0
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
