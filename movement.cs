@@ -35,7 +35,12 @@ public class movement : RigidBody2D
     {
         force = new Vector2();
         MoveToGrav();
-        Rotation = force.Angle() - (float)Math.PI / 2;
+        if(force.Length() > 0.01){
+            var error = force.Angle() - (float)Math.PI / 2 - Rotation;
+            if(error > Math.PI) error = 2 * (float) Math.PI - error;
+            if(error < -Math.PI) error = 2 * (float) Math.PI + error;
+            Rotation += 0.25f * error;
+        }
         GetInput();
         ApplyCentralImpulse(force);
     }
