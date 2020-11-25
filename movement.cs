@@ -3,7 +3,7 @@ using System;
 
 public class movement : RigidBody2D
 {
-    [Export] public int speed = 50;
+    [Export] public int speed = 25;
     [Export] public float deceleration = 0.01f;
 
     public Vector2 force = new Vector2();
