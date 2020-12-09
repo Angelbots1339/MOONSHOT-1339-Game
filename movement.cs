@@ -1,6 +1,7 @@
 using Godot;
 using System;
 
+//test change
 public class movement : RigidBody2D //extends rigidbody2D (instead of extends it's :)
 {
     [Export] public int speed = 50; //export means it is seen in the godot editor
