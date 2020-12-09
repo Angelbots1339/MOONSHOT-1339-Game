@@ -18,3 +18,5 @@ screenshots/
 
 # .csproj file ignore (If this file is missing you have to build locally)
 *.csproj
+
+.vscode/

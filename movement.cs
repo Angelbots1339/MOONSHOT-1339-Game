@@ -4,8 +4,7 @@ using System;
 //test change
 public class movement : RigidBody2D //extends rigidbody2D (instead of extends it's :)
 {
-    [Export] public int speed = 50; //export means it is seen in the godot editor
-    //you can edit these variables in the godot editor
+    [Export] public int speed = 25;
     [Export] public float deceleration = 0.01f;
 
     public Vector2 force = new Vector2(); //this variable can only be accessed in VS
