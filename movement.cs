@@ -11,7 +11,6 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
 
     public void GetInput()
     {
-        animation.flipPlayer();
         if (Input.IsActionPressed("left")) //setting up the input
             force += new Vector2(-speed, 0).Rotated(Rotation);
 
@@ -24,13 +23,25 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
 
     public void MoveToGrav()
     {
+        Node2D noMove = (Node2D) GetNode("mouse2");
+        Node2D walking = (Node2D) GetNode("Mouse Walking");
+        Node2D flying = (Node2D) GetNode("Mouse Flying");
+        noMove.Visible = false;
+        walking.Visible = false;
+        flying.Visible = false;
         Node planets = GetParent().GetNode("planets");
+        var numPlanets = 0;
         foreach (Gravity planet in planets.GetChildren())
         {
             var distanceVector = planet.GlobalPosition - this.GlobalPosition; 
 			var outsideness = (distanceVector).Length()/planet.gravityForce; //length of how far player/movementscript is from planet
-            if(distanceVector.Length() <= planet.gravityForce) force += distanceVector.Normalized() * (10+10/outsideness);
+            if(distanceVector.Length() <= planet.gravityForce) {
+                force += distanceVector.Normalized() * (10+10/outsideness);
+                numPlanets++;
+            }
         }
+        if(numPlanets > 0) walking.Visible = true;
+        else flying.Visible = true; 
     }
 
     public override void _PhysicsProcess(float delta)

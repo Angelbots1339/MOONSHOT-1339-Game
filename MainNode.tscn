@@ -106,14 +106,14 @@ scale = Vector2( 0.131656, 0.136538 )
 texture = ExtResource( 4 )
 
 [node name="Mouse Walking" type="AnimatedSprite" parent="RigidBody2D"]
-position = Vector2( 101.764, -1.02582 )
 scale = Vector2( 1.16573, 0.921545 )
 frames = SubResource( 6 )
 animation = "run"
+frame = 2
 playing = true
 
 [node name="Mouse Flying" type="AnimatedSprite" parent="RigidBody2D"]
-position = Vector2( 210.467, -32.4285 )
+position = Vector2( 0, -50 )
 scale = Vector2( 1.47073, 1.55331 )
 frames = SubResource( 12 )
 frame = 2
