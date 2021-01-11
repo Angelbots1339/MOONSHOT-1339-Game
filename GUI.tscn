@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Menu.cs" type="Script" id=1]
+
+[node name="GUI" type="CanvasLayer"]
+pause_mode = 2
+
+[node name="Menu" type="HBoxContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 46.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pause" type="Button" parent="Menu"]
+margin_right = 50.0
+margin_bottom = 46.0
+text = "Pause"
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Restart" type="Button" parent="Menu"]
+margin_left = 54.0
+margin_right = 111.0
+margin_bottom = 46.0
+text = "Restart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Menu/Pause" to="Menu" method="_OnPausePressed"]
+[connection signal="pressed" from="Menu/Restart" to="Menu" method="_OnRestartPressed"]
