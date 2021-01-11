@@ -116,7 +116,7 @@ playing = true
 position = Vector2( 0, -50 )
 scale = Vector2( 1.47073, 1.55331 )
 frames = SubResource( 12 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="RigidBody2D2" type="RigidBody2D" parent="."]
