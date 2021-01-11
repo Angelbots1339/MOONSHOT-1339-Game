@@ -8,6 +8,23 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
     [Export] public float deceleration = 0.01f;
 
     public Vector2 force = new Vector2(); //this variable can only be accessed in VS
+    private Node2D planets;
+    private Gravity[] planetArray;
+
+    public override void _Ready()
+    {
+        InitializePlanets();
+    }
+
+    private void InitializePlanets()
+    {
+        planets = GetParent().GetNode<Node2D>("planets");
+        planetArray = new Gravity[planets.GetChildCount()];
+        for(int i = 0; i < planetArray.Length; i++)
+        {
+            planetArray[i] = (Gravity)planets.GetChild(i);
+        }
+    }
 
     public void GetInput()
     {
@@ -29,18 +46,17 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
         noMove.Visible = false;
         walking.Visible = false;
         flying.Visible = false;
-        Node planets = GetParent().GetNode("planets");
-        var numPlanets = 0;
-        foreach (Gravity planet in planets.GetChildren())
+        var nearbyPlanets = 0;
+        foreach (Gravity planet in planetArray)
         {
             var distanceVector = planet.GlobalPosition - this.GlobalPosition; 
 			var outsideness = (distanceVector).Length()/planet.gravityForce; //length of how far player/movementscript is from planet
             if(distanceVector.Length() <= planet.gravityForce) {
                 force += distanceVector.Normalized() * (10+10/outsideness);
-                numPlanets++;
+                nearbyPlanets++;
             }
         }
-        if(numPlanets > 0) walking.Visible = true;
+        if(nearbyPlanets > 0) walking.Visible = true;
         else flying.Visible = true; 
     }
 

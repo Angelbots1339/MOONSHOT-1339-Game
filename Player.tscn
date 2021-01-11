@@ -5,6 +5,10 @@
 [ext_resource path="res://addons/github-integration/icons/flying.png" type="Texture" id=3]
 [ext_resource path="res://addons/github-integration/icons/MouseWalking.png" type="Texture" id=4]
 
+
+
+
+
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 34.7001
 height = 0.0
@@ -87,12 +91,12 @@ texture = ExtResource( 2 )
 scale = Vector2( 1.16573, 0.921545 )
 frames = SubResource( 6 )
 animation = "run"
-frame = 3
+frame = 2
 playing = true
 
 [node name="Mouse Flying" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -50 )
 scale = Vector2( 1.47073, 1.55331 )
 frames = SubResource( 12 )
-frame = 1
+frame = 2
 playing = true
