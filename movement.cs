@@ -11,7 +11,6 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
 
     public void GetInput()
     {
-        animation.flipPlayer();
         if (Input.IsActionPressed("left")) //setting up the input
             force += new Vector2(-speed, 0).Rotated(Rotation);
 
