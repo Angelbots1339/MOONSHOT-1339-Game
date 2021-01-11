@@ -38,6 +38,7 @@ enabled=PoolStringArray( "github-integration" )
 [gdnative]
 
 singletons=[ "res://git_api.gdnlib" ]
+singletons_disabled=[ "res://git_api.gdnlib" ]
 
 [input]
 
