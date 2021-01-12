@@ -15,9 +15,51 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 
+[node name="Quit" type="Button" parent="Panel"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Help" type="Button" parent="Panel"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+text = "Help"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HelpPanel" type="PopupPanel" parent="Panel/Help"]
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="Label" type="Label" parent="Panel/Help/HelpPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "This is the help page"
+align = 1
+valign = 1
+
+[node name="Exit" type="Button" parent="Panel/Help/HelpPanel/Label"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -35.0
+margin_bottom = 35.0
+text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="GridContainer" type="GridContainer" parent="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 50.0
 custom_constants/vseparation = 10
 custom_constants/hseparation = 10
 columns = 10
@@ -26,3 +68,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 levelPaths = PoolStringArray( "res://MainNode.tscn" )
+[connection signal="pressed" from="Panel/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="Panel/Help" to="." method="_on_Help_pressed"]
+[connection signal="pressed" from="Panel/Help/HelpPanel/Label/Exit" to="." method="_on_Exit_pressed"]
