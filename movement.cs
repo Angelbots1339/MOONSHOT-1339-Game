@@ -10,12 +10,19 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
 	public Vector2 force = new Vector2(); //this variable can only be accessed in VS
 	private Node2D planets;
 	private Gravity[] planetArray;
-
+	
+	private Node2D noMove ;
+	private Node2D walkingLeft;
+	private Node2D walkingRight;
+	private Node2D flying;
+	
+	private double nearbyPlanets = 0;
+	
 	public override void _Ready()
 	{
 		InitializePlanets();
 	}
-
+	
 	private void InitializePlanets()
 	{
 		planets = GetParent().GetNode<Node2D>("planets");
@@ -28,7 +35,7 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
 
 	public void GetInput()
 	{
-		if (Input.IsActionPressed("left")) //setting up the input
+		if (Input.IsActionPressed("left"))
 			force += new Vector2(-speed, 0).Rotated(Rotation);
 
 		if (Input.IsActionPressed("right"))
@@ -40,13 +47,6 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
 
 	public void MoveToGrav()
 	{
-		Node2D noMove = (Node2D) GetNode("mouse2");
-		Node2D walking = (Node2D) GetNode("Mouse Walking");
-		Node2D flying = (Node2D) GetNode("Mouse Flying");
-		noMove.Visible = false;
-		walking.Visible = false;
-		flying.Visible = false;
-		var nearbyPlanets = 0;
 		foreach (Gravity planet in planetArray)
 		{
 			var distanceVector = planet.GlobalPosition - this.GlobalPosition; 
@@ -56,8 +56,40 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
 				nearbyPlanets++;
 			}
 		}
-		if(nearbyPlanets > 0) walking.Visible = true;
-		else flying.Visible = true; 
+		if(nearbyPlanets > 0) Animate();
+		else{
+			noMove.Visible = false;
+			walkingLeft.Visible = false;
+			walkingRight.Visible = false;
+			flying.Visible = true;
+		} 
+	}
+	
+	public void Animate()
+	{
+		noMove = (Node2D) GetNode("mouse2");
+		walkingLeft = (Node2D) GetNode("Mouse Walking Left");
+		walkingRight = (Node2D) GetNode("Mouse Walking Right");
+		flying = (Node2D) GetNode("Mouse Flying");
+		
+		noMove.Visible = true;
+		walkingLeft.Visible = false;
+		walkingRight.Visible = false;
+		flying.Visible = false;
+		
+		if (Input.IsActionPressed("left")){
+			noMove.Visible = false;
+			walkingLeft.Visible = true;
+			walkingRight.Visible = false;
+			flying.Visible = false;
+		}
+		
+		if (Input.IsActionPressed("right")){
+			noMove.Visible = false;
+			walkingLeft.Visible = false;
+			walkingRight.Visible = true;
+			flying.Visible = false;
+		}
 	}
 
 	public override void _PhysicsProcess(float delta)

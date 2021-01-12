@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://movement.cs" type="Script" id=1]
 [ext_resource path="res://assets/Characters/flying.png" type="Texture" id=2]
@@ -76,6 +76,39 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 72, 144 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 144, 0, 72, 144 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 288, 0, 72, 144 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 432, 0, 72, 144 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 576, 0, 72, 144 )
+
+[sub_resource type="SpriteFrames" id=19]
+animations = [ {
+"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
 [node name="RigidBody2D" type="RigidBody2D"]
 position = Vector2( 300, 300 )
 contact_monitor = true
@@ -89,15 +122,21 @@ position = Vector2( -1.76965, -1.74414 )
 scale = Vector2( 0.131656, 0.136538 )
 texture = ExtResource( 4 )
 
-[node name="Mouse Walking" type="AnimatedSprite" parent="."]
+[node name="Mouse Walking Left" type="AnimatedSprite" parent="."]
 scale = Vector2( 1.16573, 0.921545 )
 frames = SubResource( 7 )
-frame = 3
+frame = 2
 playing = true
+flip_h = true
 
 [node name="Mouse Flying" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -50 )
 scale = Vector2( 1.47073, 1.55331 )
 frames = SubResource( 13 )
+frame = 1
+playing = true
+
+[node name="Mouse Walking Right" type="AnimatedSprite" parent="."]
+frames = SubResource( 19 )
 frame = 2
 playing = true
