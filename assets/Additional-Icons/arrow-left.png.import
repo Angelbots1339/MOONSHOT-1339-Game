@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/flying.png-d13c9e44a61f6728c8cc39f5af5e8e46.stex"
+path="res://.import/arrow-left.png-bf76a7b5817145a321166a29743c8bfe.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/github-integration/icons/flying.png"
-dest_files=[ "res://.import/flying.png-d13c9e44a61f6728c8cc39f5af5e8e46.stex" ]
+source_file="res://assets/Additional-Icons/arrow-left.png"
+dest_files=[ "res://.import/arrow-left.png-bf76a7b5817145a321166a29743c8bfe.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/arrow-left.png-1941a3f221b2e3cc142502e269e458f9.stex"
+path="res://.import/radioUncheckedhecked.png-d29db0aaaa56e50f5d07987062c3b8b8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/github-integration/icons/arrow-left.png"
-dest_files=[ "res://.import/arrow-left.png-1941a3f221b2e3cc142502e269e458f9.stex" ]
+source_file="res://assets/Additional-Icons/radioUncheckedhecked.png"
+dest_files=[ "res://.import/radioUncheckedhecked.png-d29db0aaaa56e50f5d07987062c3b8b8.stex" ]
 
 [params]
 

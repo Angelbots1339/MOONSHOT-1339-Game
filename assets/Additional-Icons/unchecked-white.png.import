@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/unchecked.png-02470437d0cf6ccdb5e5f0adbcafe421.stex"
+path="res://.import/unchecked-white.png-e9afe5428091ccbf00d06b661a6bf5de.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/github-integration/icons/unchecked.png"
-dest_files=[ "res://.import/unchecked.png-02470437d0cf6ccdb5e5f0adbcafe421.stex" ]
+source_file="res://assets/Additional-Icons/unchecked-white.png"
+dest_files=[ "res://.import/unchecked-white.png-e9afe5428091ccbf00d06b661a6bf5de.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/option-arrow.png-a593ddd4971494c16c9554162db7cc36.stex"
+path="res://.import/unchecked.png-b58476aab5ecaa19fb6b14a85274ee86.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/github-integration/icons/option-arrow.png"
-dest_files=[ "res://.import/option-arrow.png-a593ddd4971494c16c9554162db7cc36.stex" ]
+source_file="res://assets/Additional-Icons/unchecked.png"
+dest_files=[ "res://.import/unchecked.png-b58476aab5ecaa19fb6b14a85274ee86.stex" ]
 
 [params]
 

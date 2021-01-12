@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/reload.png-ec1821d2ce6b88dacf319266a4f3710a.stex"
+path="res://.import/reload.png-d029b58d9516faef6a4b914301afacd0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/github-integration/icons/reload.png"
-dest_files=[ "res://.import/reload.png-ec1821d2ce6b88dacf319266a4f3710a.stex" ]
+source_file="res://assets/Additional-Icons/reload.png"
+dest_files=[ "res://.import/reload.png-d029b58d9516faef6a4b914301afacd0.stex" ]
 
 [params]
 

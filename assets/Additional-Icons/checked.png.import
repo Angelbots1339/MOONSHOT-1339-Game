@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/arrow-down.png-05925cd689ad05c4a0467266ab52cce9.stex"
+path="res://.import/checked.png-b548a5472c93b247fa9ab544b27d124b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/github-integration/icons/arrow-down.png"
-dest_files=[ "res://.import/arrow-down.png-05925cd689ad05c4a0467266ab52cce9.stex" ]
+source_file="res://assets/Additional-Icons/checked.png"
+dest_files=[ "res://.import/checked.png-b548a5472c93b247fa9ab544b27d124b.stex" ]
 
 [params]
 

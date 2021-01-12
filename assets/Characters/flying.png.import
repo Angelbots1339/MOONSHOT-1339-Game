@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/MouseWalking.png-ead01e9b85bfe54e4075e1fa556a73ea.stex"
+path="res://.import/flying.png-e8c46f63956221fa00be78fe398a065b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/github-integration/icons/MouseWalking.png"
-dest_files=[ "res://.import/MouseWalking.png-ead01e9b85bfe54e4075e1fa556a73ea.stex" ]
+source_file="res://assets/Characters/flying.png"
+dest_files=[ "res://.import/flying.png-e8c46f63956221fa00be78fe398a065b.stex" ]
 
 [params]
 

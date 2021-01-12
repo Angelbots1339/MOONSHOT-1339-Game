@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/radioUncheckedhecked.png-d5681921ff8218e97c08919dcf562297.stex"
+path="res://.import/checked-white.png-ae43d5076e4e3c3f22e7e0b8df6765ef.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/github-integration/icons/radioUncheckedhecked.png"
-dest_files=[ "res://.import/radioUncheckedhecked.png-d5681921ff8218e97c08919dcf562297.stex" ]
+source_file="res://assets/Additional-Icons/checked-white.png"
+dest_files=[ "res://.import/checked-white.png-ae43d5076e4e3c3f22e7e0b8df6765ef.stex" ]
 
 [params]
 
