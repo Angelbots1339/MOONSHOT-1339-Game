@@ -19,6 +19,7 @@ public class LevelSelect : GridContainer
             button.Level = i + 1;
             button.Name = ("Level " + button.Level);
             button.Text = button.Name;
+            button.RectMinSize = new Vector2(50.0f, 50.0f);
             this.AddChild(button, true);
             button.Connect("pressed", button, nameof(MenuButton.LevelSelect));
         }

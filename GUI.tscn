@@ -16,7 +16,8 @@ __meta__ = {
 
 [node name="Pause" type="Button" parent="Menu"]
 margin_right = 50.0
-margin_bottom = 50.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 50, 50 )
 text = "Pause"
 align = 0
 __meta__ = {
@@ -26,20 +27,21 @@ __meta__ = {
 [node name="HiddenMenu" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 margin_bottom = 50.0
-custom_constants/separation = 10
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Play" type="Button" parent="HiddenMenu"]
-margin_right = 38.0
+margin_right = 50.0
 margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
 text = "Play"
 
 [node name="Restart" type="Button" parent="HiddenMenu"]
-margin_left = 48.0
-margin_right = 105.0
+margin_left = 54.0
+margin_right = 111.0
 margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
 text = "Restart"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -49,6 +51,7 @@ __meta__ = {
 margin_left = 115.0
 margin_right = 198.0
 margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
 text = "Main Menu"
 [connection signal="pressed" from="Menu/Pause" to="." method="_on_Pause_pressed"]
 [connection signal="pressed" from="HiddenMenu/Play" to="." method="_on_Play_pressed"]
