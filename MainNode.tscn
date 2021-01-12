@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Planet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/planets/planet earth.png" type="Texture" id=4]
+[ext_resource path="res://assets/planets/planet yellow and orange.png" type="Texture" id=5]
+[ext_resource path="res://assets/planets/planet orange and blue.png" type="Texture" id=6]
 
 [node name="Node2D" type="Node2D"]
 
@@ -17,13 +20,31 @@ zoom = Vector2( 3, 3 )
 position = Vector2( 300, 100 )
 gravityForce = 200.0
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="planets/Planet1"]
+
+[node name="Sprite" type="Sprite" parent="planets/Planet1"]
+scale = Vector2( 0.436185, 0.451934 )
+texture = ExtResource( 4 )
+
 [node name="Planet2" parent="planets" instance=ExtResource( 3 )]
 position = Vector2( 712.627, 406.811 )
 gravityForce = 150.0
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="planets/Planet2"]
+
+[node name="Sprite" type="Sprite" parent="planets/Planet2"]
+scale = Vector2( 0.606275, 0.587376 )
+texture = ExtResource( 5 )
+
 [node name="Planet3" parent="planets" instance=ExtResource( 3 )]
 position = Vector2( 158.571, 432.296 )
 gravityForce = 150.0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="planets/Planet3"]
+
+[node name="Sprite" type="Sprite" parent="planets/Planet3"]
+scale = Vector2( 0.429886, 0.451934 )
+texture = ExtResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 

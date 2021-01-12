@@ -92,11 +92,12 @@ texture = ExtResource( 4 )
 [node name="Mouse Walking" type="AnimatedSprite" parent="."]
 scale = Vector2( 1.16573, 0.921545 )
 frames = SubResource( 7 )
+frame = 3
 playing = true
 
 [node name="Mouse Flying" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -50 )
 scale = Vector2( 1.47073, 1.55331 )
 frames = SubResource( 13 )
-frame = 4
+frame = 2
 playing = true
