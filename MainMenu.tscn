@@ -14,8 +14,15 @@ __meta__ = {
 [node name="Panel" type="Panel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Quit" type="Button" parent="Panel"]
+[node name="Panel" type="Panel" parent="Panel"]
+anchor_right = 1.0
+margin_bottom = 50.0
+
+[node name="Quit" type="Button" parent="Panel/Panel"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -50.0
@@ -26,7 +33,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Help" type="Button" parent="Panel"]
+[node name="Help" type="Button" parent="Panel/Panel"]
 margin_right = 50.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
@@ -35,18 +42,48 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HelpPanel" type="PopupPanel" parent="Panel/Help"]
-margin_right = 1024.0
-margin_bottom = 600.0
+[node name="Label" type="Label" parent="Panel/Panel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -462.0
+margin_right = 462.0
+margin_bottom = 50.0
+text = "Moonshot Game - Angelbotics - Team 1339
+Main Menu"
+align = 1
+valign = 1
+uppercase = true
 
-[node name="Label" type="Label" parent="Panel/Help/HelpPanel"]
+[node name="GridContainer" type="GridContainer" parent="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 50.0
+columns = 10
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+levelPaths = PoolStringArray( "res://Levels/Level 1.tscn", "res://Levels/Level 2.tscn" )
+
+[node name="HelpPanel" type="PopupPanel" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/HelpPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
 text = "This is the help page"
 align = 1
 valign = 1
 
-[node name="Exit" type="Button" parent="Panel/Help/HelpPanel/Label"]
+[node name="Exit" type="Button" parent="Panel/HelpPanel/Label"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -35.0
@@ -55,19 +92,6 @@ text = "Exit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="GridContainer" type="GridContainer" parent="Panel"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 50.0
-custom_constants/vseparation = 10
-custom_constants/hseparation = 10
-columns = 10
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-levelPaths = PoolStringArray( "res://MainNode.tscn" )
-[connection signal="pressed" from="Panel/Quit" to="." method="_on_Quit_pressed"]
-[connection signal="pressed" from="Panel/Help" to="." method="_on_Help_pressed"]
-[connection signal="pressed" from="Panel/Help/HelpPanel/Label/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="Panel/Panel/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="Panel/Panel/Help" to="." method="_on_Help_pressed"]
+[connection signal="pressed" from="Panel/HelpPanel/Label/Exit" to="." method="_on_Exit_pressed"]

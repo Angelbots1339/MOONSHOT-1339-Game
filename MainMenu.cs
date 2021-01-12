@@ -11,7 +11,7 @@ public class MainMenu : Control
 	public PopupPanel helpPanel;
 	public override void _Ready()
 	{
-		helpPanel = GetNode<PopupPanel>("Panel/Help/HelpPanel");
+		helpPanel = GetNode<PopupPanel>("Panel/HelpPanel");
 	}
 
 	public void _on_Quit_pressed()

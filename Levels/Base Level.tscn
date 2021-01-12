@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://GUI.tscn" type="PackedScene" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2( 510, 300 )
+current = true
+zoom = Vector2( 3, 3 )
+
+[node name="planets" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+
+[node name="GUI" parent="." instance=ExtResource( 2 )]
