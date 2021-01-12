@@ -19,32 +19,17 @@ zoom = Vector2( 3, 3 )
 [node name="Planet1" parent="planets" instance=ExtResource( 3 )]
 position = Vector2( 300, 100 )
 gravityForce = 200.0
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="planets/Planet1"]
-
-[node name="Sprite" type="Sprite" parent="planets/Planet1"]
-scale = Vector2( 0.436185, 0.451934 )
 texture = ExtResource( 4 )
 
 [node name="Planet2" parent="planets" instance=ExtResource( 3 )]
 position = Vector2( 712.627, 406.811 )
 gravityForce = 150.0
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="planets/Planet2"]
-
-[node name="Sprite" type="Sprite" parent="planets/Planet2"]
-scale = Vector2( 0.606275, 0.587376 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="Planet3" parent="planets" instance=ExtResource( 3 )]
 position = Vector2( 158.571, 432.296 )
 gravityForce = 150.0
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="planets/Planet3"]
-
-[node name="Sprite" type="Sprite" parent="planets/Planet3"]
-scale = Vector2( 0.429886, 0.451934 )
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 

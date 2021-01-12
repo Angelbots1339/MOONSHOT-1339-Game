@@ -4,8 +4,12 @@ using System;
 public class Gravity : RigidBody2D
 {
 	[Export] public float gravityForce = 40;
+	[Export] public Texture texture;
 
-	// Called when the node enters the scene tree for the first time.
+    public override void _Ready()
+    {
+        GetNode<Sprite>("Sprite").Texture = texture;
+    }
 
 	public float GetGravity()
 	{
