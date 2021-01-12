@@ -26,6 +26,7 @@ __meta__ = {
 [node name="HiddenMenu" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 margin_bottom = 50.0
+custom_constants/separation = 10
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -36,8 +37,8 @@ margin_bottom = 50.0
 text = "Play"
 
 [node name="Restart" type="Button" parent="HiddenMenu"]
-margin_left = 42.0
-margin_right = 99.0
+margin_left = 48.0
+margin_right = 105.0
 margin_bottom = 50.0
 text = "Restart"
 __meta__ = {
@@ -45,8 +46,8 @@ __meta__ = {
 }
 
 [node name="Main Menu" type="Button" parent="HiddenMenu"]
-margin_left = 103.0
-margin_right = 186.0
+margin_left = 115.0
+margin_right = 198.0
 margin_bottom = 50.0
 text = "Main Menu"
 [connection signal="pressed" from="Menu/Pause" to="." method="_on_Pause_pressed"]
