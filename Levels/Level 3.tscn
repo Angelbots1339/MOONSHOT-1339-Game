@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GUI.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Planet.tscn" type="PackedScene" id=5]
 
 [node name="Node2D" type="Node2D"]
 
@@ -12,15 +11,6 @@ current = true
 zoom = Vector2( 3, 3 )
 
 [node name="planets" type="Node2D" parent="."]
-
-[node name="Planet1" parent="planets" instance=ExtResource( 5 )]
-position = Vector2( 198, 384 )
-gravityForce = 200.0
-
-[node name="Planet2" parent="planets" instance=ExtResource( 5 )]
-position = Vector2( 504, 80 )
-gravityForce = 400.0
-texture = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 

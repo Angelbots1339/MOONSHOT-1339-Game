@@ -16,7 +16,7 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
 	private Node2D walkingRight;
 	private Node2D flying;
 	
-	private double nearbyPlanets = 0;
+	private double nearbyPlanets;
 	
 	public override void _Ready()
 	{
@@ -47,6 +47,8 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
 
 	public void MoveToGrav()
 	{
+		nearbyPlanets = 0;
+		
 		foreach (Gravity planet in planetArray)
 		{
 			var distanceVector = planet.GlobalPosition - this.GlobalPosition; 
@@ -56,13 +58,8 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
 				nearbyPlanets++;
 			}
 		}
-		if(nearbyPlanets > 0) Animate();
-		else{
-			noMove.Visible = false;
-			walkingLeft.Visible = false;
-			walkingRight.Visible = false;
-			flying.Visible = true;
-		} 
+		
+		Animate();
 	}
 	
 	public void Animate()
@@ -77,19 +74,29 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
 		walkingRight.Visible = false;
 		flying.Visible = false;
 		
-		if (Input.IsActionPressed("left")){
-			noMove.Visible = false;
-			walkingLeft.Visible = true;
-			walkingRight.Visible = false;
-			flying.Visible = false;
-		}
+		if(nearbyPlanets > 0){
+			if (Input.IsActionPressed("left")){
+				noMove.Visible = false;
+				walkingLeft.Visible = true;
+				walkingRight.Visible = false;
+				flying.Visible = false;
+			}
 		
-		if (Input.IsActionPressed("right")){
+			if (Input.IsActionPressed("right")){
+				noMove.Visible = false;
+				walkingLeft.Visible = false;
+				walkingRight.Visible = true;
+				flying.Visible = false;
+			}
+		}
+		if((nearbyPlanets == 0) || (Input.IsActionPressed("jump")))
+		{
 			noMove.Visible = false;
 			walkingLeft.Visible = false;
-			walkingRight.Visible = true;
-			flying.Visible = false;
+			walkingRight.Visible = false;
+			flying.Visible = true;
 		}
+		
 	}
 
 	public override void _PhysicsProcess(float delta)
