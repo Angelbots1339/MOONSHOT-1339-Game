@@ -21,7 +21,10 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
 	
 	public override void _Ready()
 	{
-		camera = GetParent().GetNode<Camera2D>("Camera2D");
+		noMove = (Node2D) GetNode("mouse2");
+		walkingLeft = (Node2D) GetNode("Mouse Walking Left");
+		walkingRight = (Node2D) GetNode("Mouse Walking Right");
+		flying = (Node2D) GetNode("Mouse Flying");
 		InitializePlanets();
 	}
 	
@@ -37,14 +40,19 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
 
 	public void GetInput()
 	{
-		if (Input.IsActionPressed("left"))
-			force += new Vector2(-speed, 0).Rotated(Rotation);
+		var colliding = GetCollidingBodies();
+		if(colliding.Count > 0){
+			if (Input.IsActionPressed("left"))
+				force += new Vector2(-speed, 0).Rotated(Rotation);
 
-		if (Input.IsActionPressed("right"))
-			force += new Vector2(speed, 0).Rotated(Rotation);
+			if (Input.IsActionPressed("right"))
+				force += new Vector2(speed, 0).Rotated(Rotation);
+		}
 
-		if (Input.IsActionJustPressed("jump"))
+		if (Input.IsActionJustPressed("jump") && nearbyPlanets > 0)
 			force += new Vector2(0, -700).Rotated(Rotation);
+		
+		Animate();
 	}
 
 	public void MoveToGrav()
@@ -60,45 +68,30 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
 				nearbyPlanets++;
 			}
 		}
-		
-		Animate();
 	}
 	
 	public void Animate()
-	{
-		noMove = (Node2D) GetNode("mouse2");
-		walkingLeft = (Node2D) GetNode("Mouse Walking Left");
-		walkingRight = (Node2D) GetNode("Mouse Walking Right");
-		flying = (Node2D) GetNode("Mouse Flying");
-		
+	{		
 		noMove.Visible = true;
 		walkingLeft.Visible = false;
 		walkingRight.Visible = false;
 		flying.Visible = false;
 		
-		if(nearbyPlanets > 0){
+		if((nearbyPlanets == 0) || (Input.IsActionPressed("jump")))
+		{
+			noMove.Visible = false;
+			flying.Visible = true;
+		} else {
 			if (Input.IsActionPressed("left")){
 				noMove.Visible = false;
 				walkingLeft.Visible = true;
-				walkingRight.Visible = false;
-				flying.Visible = false;
 			}
 		
 			if (Input.IsActionPressed("right")){
 				noMove.Visible = false;
-				walkingLeft.Visible = false;
 				walkingRight.Visible = true;
-				flying.Visible = false;
 			}
 		}
-		if((nearbyPlanets == 0) || (Input.IsActionPressed("jump")))
-		{
-			noMove.Visible = false;
-			walkingLeft.Visible = false;
-			walkingRight.Visible = false;
-			flying.Visible = true;
-		}
-		
 	}
 
 	public override void _PhysicsProcess(float delta)
