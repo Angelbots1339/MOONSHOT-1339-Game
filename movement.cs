@@ -12,20 +12,22 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
 	private Gravity[] planetArray;
 	
 	private Node2D noMove ;
-	private Node2D walkingLeft;
-	private Node2D walkingRight;
-	private Node2D flying;
+	private AnimatedSprite walkingLeft;
+	private AnimatedSprite walkingRight;
+	private AnimatedSprite flying;
 	
 	private double nearbyPlanets;
+	private double collidePlanets;
+	private String direction = "none"; // TODO can someone make this an ENUM?
 	private Boolean disableLevelReset;
 	
 	public override void _Ready()
 	{
 		disableLevelReset = false;
 		noMove = (Node2D) GetNode("mouse2");
-		walkingLeft = (Node2D) GetNode("Mouse Walking Left");
-		walkingRight = (Node2D) GetNode("Mouse Walking Right");
-		flying = (Node2D) GetNode("Mouse Flying");
+		walkingLeft = (AnimatedSprite) GetNode("Mouse Walking Left");
+		walkingRight = (AnimatedSprite) GetNode("Mouse Walking Right");
+		flying = (AnimatedSprite) GetNode("Mouse Flying");
 		InitializePlanets();
 	}
 	
@@ -42,23 +44,41 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
 	public void GetInput()
 	{
 		var colliding = GetCollidingBodies();
+		var doAnimation = true;
 		if(colliding.Count > 0){
-			if (Input.IsActionPressed("left"))
+			doAnimation = false;
+			direction = "none"; // IDK if this is what we want for final verson, but I think it was broken so mouse no longer plays animations if no buttons are pressed
+			if(Input.IsActionPressed("left") && Input.IsActionPressed("right")){
+				doAnimation = false;
+				direction = "none";
+			}
+
+			else if (Input.IsActionPressed("left")){
 				force += new Vector2(-speed, 0).Rotated(Rotation);
+				doAnimation = true;
+				direction = "left";
+			}
 
-			if (Input.IsActionPressed("right"))
+			else if (Input.IsActionPressed("right")){
 				force += new Vector2(speed, 0).Rotated(Rotation);
-		}
+				doAnimation = true;
+				direction = "right";
+			}
+		} else if(collidePlanets == 0)
+			direction = "none";
 
-		if (Input.IsActionJustPressed("jump") && nearbyPlanets > 0)
+		if (Input.IsActionJustPressed("jump") && collidePlanets > 0)
 			force += new Vector2(0, -700).Rotated(Rotation);
 		
+		walkingLeft.Playing = doAnimation;
+		walkingRight.Playing = doAnimation;
 		Animate();
 	}
 
 	public void MoveToGrav()
 	{
 		nearbyPlanets = 0;
+		collidePlanets = 0;
 		
 		foreach (Gravity planet in planetArray)
 		{
@@ -67,6 +87,9 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
 			if(distanceVector.Length() <= planet.gravityForce) {
 				force += distanceVector.Normalized() * (10+10/outsideness);
 				nearbyPlanets++;
+			}
+			if(distanceVector.Length() <= planet.nearGravRange) {
+				collidePlanets++;
 			}
 		}
 	}
@@ -83,14 +106,18 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
 			noMove.Visible = false;
 			flying.Visible = true;
 		} else {
-			if(Input.IsActionPressed("left") && Input.IsActionPressed("right")){} // Makes sure left & right animations are exclusive
+			if(direction == "none"){
+				noMove.Visible = true;
+				walkingLeft.Visible = false;
+				walkingRight.Visible = false;
+			}
 
-			else if (Input.IsActionPressed("left")){
+			if (direction == "left"){
 				noMove.Visible = false;
 				walkingLeft.Visible = true;
 			}
 		
-			else if (Input.IsActionPressed("right")){
+			if (direction == "right"){
 				noMove.Visible = false;
 				walkingRight.Visible = true;
 			}
