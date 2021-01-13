@@ -18,11 +18,13 @@ zoom = Vector2( 3, 3 )
 [node name="Planet1" parent="planets" instance=ExtResource( 5 )]
 position = Vector2( 198, 384 )
 gravityForce = 200.0
+nearGravRange = 205.0
 texture = ExtResource( 4 )
 
 [node name="Planet2" parent="planets" instance=ExtResource( 5 )]
-position = Vector2( 504, 80 )
+position = Vector2( 505, 80 )
 gravityForce = 400.0
+nearGravRange = 405.0
 texture = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]

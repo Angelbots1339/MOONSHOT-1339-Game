@@ -4,6 +4,7 @@ using System;
 public class Gravity : RigidBody2D
 {
 	[Export] public float gravityForce = 40;
+	[Export] public float nearGravRange = 45;
 	[Export] public Texture texture;
 
 	public override void _Ready()
