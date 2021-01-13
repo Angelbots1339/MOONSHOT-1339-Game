@@ -63,7 +63,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-levelPaths = PoolStringArray( "res://Levels/Level 1.tscn", "res://Levels/Level 2.tscn", "res://Levels/Level 3.tscn" )
+levelPaths = PoolStringArray( "res://Levels/Level 1.tscn", "res://Levels/Level 2.tscn" )
 
 [node name="HelpPanel" type="PopupPanel" parent="Panel"]
 anchor_right = 1.0

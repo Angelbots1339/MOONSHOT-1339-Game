@@ -111,6 +111,7 @@ animations = [ {
 
 [node name="RigidBody2D" type="RigidBody2D"]
 position = Vector2( 300, 300 )
+contacts_reported = 3
 contact_monitor = true
 script = ExtResource( 1 )
 
@@ -125,6 +126,7 @@ texture = ExtResource( 4 )
 [node name="Mouse Walking Left" type="AnimatedSprite" parent="."]
 scale = Vector2( 1.16573, 0.921545 )
 frames = SubResource( 7 )
+frame = 2
 playing = true
 flip_h = true
 
@@ -132,9 +134,11 @@ flip_h = true
 position = Vector2( 0, -50 )
 scale = Vector2( 1.47073, 1.55331 )
 frames = SubResource( 13 )
-frame = 4
+frame = 1
 playing = true
 
 [node name="Mouse Walking Right" type="AnimatedSprite" parent="."]
+visible = false
 frames = SubResource( 19 )
+frame = 2
 playing = true
