@@ -16,7 +16,7 @@ current = true
 [node name="planets" type="Node2D" parent="."]
 
 [node name="Planet1" parent="planets" instance=ExtResource( 5 )]
-position = Vector2( 300, 100 )
+position = Vector2( 301, 101 )
 gravityForce = 200.0
 nearGravRange = 150.0
 texture = ExtResource( 1 )

@@ -20,6 +20,6 @@ public class Gravity : RigidBody2D
 	public override void _Draw()
 	{
 		var color = new Color(0.5f,0.5f,0.5f,0.5f);
-		DrawCircle(new Vector2(), gravityForce, color);
+		DrawCircle(new Vector2(), gravityForce/Scale.x, color);
 	}
 }
