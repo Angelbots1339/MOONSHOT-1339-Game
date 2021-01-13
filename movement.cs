@@ -10,7 +10,6 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
 	public Vector2 force = new Vector2(); //this variable can only be accessed in VS
 	private Node2D planets;
 	private Gravity[] planetArray;
-	private Camera2D camera;
 	
 	private Node2D noMove ;
 	private Node2D walkingLeft;
@@ -18,9 +17,11 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
 	private Node2D flying;
 	
 	private double nearbyPlanets;
+	private Boolean disableLevelReset;
 	
 	public override void _Ready()
 	{
+		disableLevelReset = false;
 		noMove = (Node2D) GetNode("mouse2");
 		walkingLeft = (Node2D) GetNode("Mouse Walking Left");
 		walkingRight = (Node2D) GetNode("Mouse Walking Right");
@@ -108,8 +109,13 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
 		ApplyCentralImpulse(force);
 	}
 
+	public void _on_VisibilityNotifier2D_tree_exiting()
+	{
+		disableLevelReset = true;
+	}
+
 	public void _on_VisibilityNotifier2D_screen_exited()
 	{
-		GetTree().ReloadCurrentScene();
+		if(!disableLevelReset) GetTree().ReloadCurrentScene();
 	}
 }
