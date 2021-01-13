@@ -18,7 +18,13 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
 	
 	private double nearbyPlanets;
 	private double collidePlanets;
-	private String direction = "none"; // TODO can someone make this an ENUM?
+	enum AnimationState
+	{
+		None,
+		Left,
+		Right
+	}
+	private AnimationState direction = AnimationState.None;
 	private Boolean disableLevelReset;
 	
 	public override void _Ready()
@@ -47,25 +53,20 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
 		var doAnimation = true;
 		if(colliding.Count > 0){
 			doAnimation = false;
-			direction = "none"; // IDK if this is what we want for final verson, but I think it was broken so mouse no longer plays animations if no buttons are pressed
-			if(Input.IsActionPressed("left") && Input.IsActionPressed("right")){
-				doAnimation = false;
-				direction = "none";
-			}
-
-			else if (Input.IsActionPressed("left")){
-				force += new Vector2(-speed, 0).Rotated(Rotation);
+			if(Input.IsActionPressed("left") ^ Input.IsActionPressed("right")){
 				doAnimation = true;
-				direction = "left";
-			}
+				if (Input.IsActionPressed("left")){
+					force += new Vector2(-speed, 0).Rotated(Rotation);
+					direction = AnimationState.Left;
+				}
 
-			else if (Input.IsActionPressed("right")){
-				force += new Vector2(speed, 0).Rotated(Rotation);
-				doAnimation = true;
-				direction = "right";
+				else if (Input.IsActionPressed("right")){
+					force += new Vector2(speed, 0).Rotated(Rotation);
+					direction = AnimationState.Right;
+				}
 			}
 		} else if(collidePlanets == 0)
-			direction = "none";
+			direction = AnimationState.None;
 
 		if (Input.IsActionJustPressed("jump") && collidePlanets > 0)
 			force += new Vector2(0, -700).Rotated(Rotation);
@@ -106,20 +107,27 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
 			noMove.Visible = false;
 			flying.Visible = true;
 		} else {
-			if(direction == "none"){
-				noMove.Visible = true;
-				walkingLeft.Visible = false;
-				walkingRight.Visible = false;
-			}
+			switch (direction) {
+				case AnimationState.None:{
+					noMove.Visible = true;
+					walkingLeft.Visible = false;
+					walkingRight.Visible = false;
+					break;
+				}
 
-			if (direction == "left"){
-				noMove.Visible = false;
-				walkingLeft.Visible = true;
-			}
-		
-			if (direction == "right"){
-				noMove.Visible = false;
-				walkingRight.Visible = true;
+				case AnimationState.Left:{
+					noMove.Visible = false;
+					walkingLeft.Visible = true;
+					break;
+				}
+			
+				case AnimationState.Right:{
+					noMove.Visible = false;
+					walkingRight.Visible = true;
+					break;
+				}
+				
+				default:break;
 			}
 		}
 	}
