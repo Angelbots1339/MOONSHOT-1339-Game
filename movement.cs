@@ -83,12 +83,14 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
 			noMove.Visible = false;
 			flying.Visible = true;
 		} else {
-			if (Input.IsActionPressed("left")){
+			if(Input.IsActionPressed("left") && Input.IsActionPressed("right")){} // Makes sure left & right animations are exclusive
+
+			else if (Input.IsActionPressed("left")){
 				noMove.Visible = false;
 				walkingLeft.Visible = true;
 			}
 		
-			if (Input.IsActionPressed("right")){
+			else if (Input.IsActionPressed("right")){
 				noMove.Visible = false;
 				walkingRight.Visible = true;
 			}
