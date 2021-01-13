@@ -22,6 +22,7 @@ texture = ExtResource( 4 )
 
 [node name="Planet2" parent="planets" instance=ExtResource( 5 )]
 position = Vector2( 504, 80 )
+gravityForce = 400.0
 texture = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
