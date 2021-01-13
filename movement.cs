@@ -19,9 +19,11 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
 	private double nearbyPlanets;
 	private double collidePlanets;
 	private String direction = "none";
+	private Boolean disableLevelReset;
 	
 	public override void _Ready()
 	{
+		disableLevelReset = false;
 		noMove = (Node2D) GetNode("mouse2");
 		walkingLeft = (AnimatedSprite) GetNode("Mouse Walking Left");
 		walkingRight = (AnimatedSprite) GetNode("Mouse Walking Right");
@@ -122,5 +124,15 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
 		}
 		GetInput();
 		ApplyCentralImpulse(force);
+	}
+
+	public void _on_VisibilityNotifier2D_tree_exiting()
+	{
+		disableLevelReset = true;
+	}
+
+	public void _on_VisibilityNotifier2D_screen_exited()
+	{
+		if(!disableLevelReset) GetTree().ReloadCurrentScene();
 	}
 }

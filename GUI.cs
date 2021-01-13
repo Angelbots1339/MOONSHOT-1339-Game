@@ -38,7 +38,7 @@ public class GUI : CanvasLayer
 	public void _on_Main_Menu_pressed()
 	{
 		GD.Print("Main Menu");
-		_on_Play_pressed();
+		GetTree().Paused = false;
 		GetTree().ChangeScene("res://MainMenu.tscn");
 	}
 
