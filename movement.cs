@@ -10,6 +10,7 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
 	public Vector2 force = new Vector2(); //this variable can only be accessed in VS
 	private Node2D planets;
 	private Gravity[] planetArray;
+	private Camera2D camera;
 	
 	private Node2D noMove ;
 	private Node2D walkingLeft;
@@ -20,6 +21,7 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
 	
 	public override void _Ready()
 	{
+		camera = GetParent().GetNode<Camera2D>("Camera2D");
 		InitializePlanets();
 	}
 	
@@ -111,5 +113,10 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
 		}
 		GetInput();
 		ApplyCentralImpulse(force);
+	}
+
+	public void _on_VisibilityNotifier2D_screen_exited()
+	{
+		GetTree().ReloadCurrentScene();
 	}
 }
