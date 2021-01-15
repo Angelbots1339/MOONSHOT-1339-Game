@@ -3,11 +3,7 @@ using System;
 
 public class GUI : CanvasLayer
 {
-	// Declare member variables here. Examples:
-	// private int a = 2;
-	// private string b = "text";
-
-	// Called when the node enters the scene tree for the first time.
+	[Export] string mainMenuPath;
 	HBoxContainer menu;
 	HBoxContainer hiddenMenu;
 	public override void _Ready()
@@ -36,7 +32,7 @@ public class GUI : CanvasLayer
 	public void _on_Main_Menu_pressed()
 	{
 		GetTree().Paused = false;
-		GetTree().ChangeScene("res://MainMenu.tscn");
+		GetTree().ChangeScene(mainMenuPath);
 	}
 
 	public void _on_Restart_pressed()
@@ -44,10 +40,4 @@ public class GUI : CanvasLayer
 		_on_Play_pressed();
 		GetTree().ReloadCurrentScene();
 	}
-
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
 }

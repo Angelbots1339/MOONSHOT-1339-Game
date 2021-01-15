@@ -3,7 +3,7 @@ using System;
 
 public class Player : Movement
 {	
-	private Node2D noMove ;
+	private Sprite noMove ;
 	private AnimatedSprite walkingLeft;
 	private AnimatedSprite walkingRight;
 	private AnimatedSprite flying;
@@ -21,13 +21,13 @@ public class Player : Movement
     {
         base._Ready();
         disableLevelReset = false;
-		noMove = (Node2D) GetNode("mouse2");
+		noMove = (Sprite) GetNode("mouse2");
 		walkingLeft = (AnimatedSprite) GetNode("Mouse Walking Left");
 		walkingRight = (AnimatedSprite) GetNode("Mouse Walking Right");
 		flying = (AnimatedSprite) GetNode("Mouse Flying");
     }
 
-    public void GetInput()
+    public void GetInput()//TODO Should this really be called every physics process or can we use singals? May help performance issues if they ever come up
 	{
 		var colliding = GetCollidingBodies();
 		var doAnimation = true;
@@ -63,7 +63,7 @@ public class Player : Movement
 		walkingRight.Visible = false;
 		flying.Visible = false;
 		
-		if((nearbyPlanets == 0) || (Input.IsActionPressed("jump")))
+		if((nearbyPlanets == 0) || (Input.IsActionPressed("jump"))) //TODO this means that while jump is pressed, no other animations play. Looks strange when walking left and holding jump. Maybe make inputs exclusive?
 		{
 			noMove.Visible = false;
 			flying.Visible = true;
@@ -102,10 +102,6 @@ public class Player : Movement
 		force = new Vector2();
     }
 
-
-    
-
-    
 	public void _on_VisibilityNotifier2D_tree_exiting()
 	{
 		disableLevelReset = true;

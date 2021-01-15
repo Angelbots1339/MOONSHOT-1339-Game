@@ -1,10 +1,11 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://GUI.cs" type="Script" id=1]
+[ext_resource path="res://Source/GUI.cs" type="Script" id=1]
 
 [node name="GUI" type="CanvasLayer"]
 pause_mode = 2
 script = ExtResource( 1 )
+mainMenuPath = "res://Levels/MainMenu.tscn"
 
 [node name="Menu" type="HBoxContainer" parent="."]
 visible = false
