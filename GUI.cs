@@ -24,27 +24,23 @@ public class GUI : CanvasLayer
 
 	public void _on_Pause_pressed()
 	{
-		GD.Print("Pause");
 		ShowMenu(false);
 		GetTree().Paused = true;
 	}
 
 	public void _on_Play_pressed()
 	{
-		GD.Print("Play");
 		ShowMenu(true);
 		GetTree().Paused = false;
 	}
 	public void _on_Main_Menu_pressed()
 	{
-		GD.Print("Main Menu");
 		GetTree().Paused = false;
 		GetTree().ChangeScene("res://MainMenu.tscn");
 	}
 
 	public void _on_Restart_pressed()
 	{
-		GD.Print("Restart");
 		_on_Play_pressed();
 		GetTree().ReloadCurrentScene();
 	}
