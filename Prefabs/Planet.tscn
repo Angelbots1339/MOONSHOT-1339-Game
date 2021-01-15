@@ -8,6 +8,8 @@ radius = 34.7001
 height = 0.0
 
 [node name="Planet1" type="RigidBody2D"]
+collision_layer = 3
+collision_mask = 3
 mode = 1
 script = ExtResource( 2 )
 

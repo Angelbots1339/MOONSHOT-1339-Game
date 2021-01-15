@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/planets/planet earth.png" type="Texture" id=1]
 [ext_resource path="res://assets/planets/planet orange and blue.png" type="Texture" id=2]
@@ -6,7 +6,7 @@
 [ext_resource path="res://Prefabs/GUI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Prefabs/Planet.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Prefabs/Player.tscn" type="PackedScene" id=6]
-
+[ext_resource path="res://Prefabs/CookingStation.tscn" type="PackedScene" id=7]
 
 [node name="Node2D" type="Node2D"]
 
@@ -35,5 +35,8 @@ nearGravRange = 150.0
 texture = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
+
+[node name="CookingStation" parent="." instance=ExtResource( 7 )]
+position = Vector2( 72.998, 432.296 )
 
 [node name="GUI" parent="." instance=ExtResource( 4 )]
