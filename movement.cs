@@ -53,6 +53,7 @@ public class movement : RigidBody2D //extends rigidbody2D (instead of extends it
 		var doAnimation = true;
 		if(colliding.Count > 0){
 			doAnimation = false;
+			direction = AnimationState.None;
 			if(Input.IsActionPressed("left") ^ Input.IsActionPressed("right")){
 				doAnimation = true;
 				if (Input.IsActionPressed("left")){
