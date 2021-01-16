@@ -32,8 +32,8 @@ public class Player : Movement
 		var colliding = GetCollidingBodies();
 		var doAnimation = true;
 		if(colliding.Count > 0){
-			doAnimation = false;
-			direction = AnimationState.None;
+			doAnimation = false; //TODO add an idle left/right animation instead of pausing current animation
+			//direction = AnimationState.None;
 			if(Input.IsActionPressed("left") ^ Input.IsActionPressed("right")){
 				doAnimation = true;
 				if (Input.IsActionPressed("left")){
@@ -104,6 +104,9 @@ public class Player : Movement
 
 	public void _on_VisibilityNotifier2D_tree_exiting()
 	{
+		walkingLeft.Frame = 1;
+		walkingRight.Frame = 1;
+		flying.Frame = 1;
 		disableLevelReset = true;
 	}
 
