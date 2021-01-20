@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Source/Player.cs" type="Script" id=1]
 [ext_resource path="res://assets/Characters/flying2.png" type="Texture" id=2]
@@ -143,7 +143,6 @@ visible = false
 position = Vector2( -0.837769, -2.52271 )
 scale = Vector2( 0.138268, 0.141701 )
 frames = SubResource( 13 )
-frame = 4
 playing = true
 
 [node name="Mouse Walking Right" type="AnimatedSprite" parent="."]
@@ -151,11 +150,9 @@ visible = false
 position = Vector2( 4.17896, -3.78699 )
 scale = Vector2( 0.14231, 0.145879 )
 frames = SubResource( 19 )
+frame = 1
 playing = true
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
-
-[node name="HeldItem" type="Sprite" parent="."]
-texture = ExtResource( 5 )
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="tree_exiting" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_tree_exiting"]

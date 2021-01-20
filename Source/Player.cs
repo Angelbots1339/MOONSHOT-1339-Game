@@ -7,10 +7,6 @@ public class Player : Movement
 	private AnimatedSprite walkingLeft;
 	private AnimatedSprite walkingRight;
 	private AnimatedSprite flying;
-
-	private Sprite heldNode;
-
-	private FoodItem heldItem = FoodItem.HAMBURGER;
 	
 	enum AnimationState
 	{
@@ -29,10 +25,9 @@ public class Player : Movement
 		walkingLeft = (AnimatedSprite) GetNode("Mouse Walking Left");
 		walkingRight = (AnimatedSprite) GetNode("Mouse Walking Right");
 		flying = (AnimatedSprite) GetNode("Mouse Flying");
-		heldNode = ((Sprite) GetNode("HeldItem"));
-    }
+	}
 
-    public void GetInput()
+	public void GetInput()//TODO Should this really be called every physics process or can we use singals? May help performance issues if they ever come up
 	{
 		var colliding = GetCollidingBodies();
 		var doAnimation = true;
@@ -60,12 +55,6 @@ public class Player : Movement
 		walkingLeft.Playing = doAnimation;
 		walkingRight.Playing = doAnimation;
 		Animate();
-		if(heldItem.ImagePath != ""){
-			heldNode.Texture = (Texture) GD.Load("res://"+heldItem.ImagePath);
-			heldNode.Visible = true;
-		}else{
-			heldNode.Visible = false;
-		}
 	}
 	public void Animate()
 	{		
