@@ -17,17 +17,17 @@ public class Player : Movement
 	private AnimationState direction = AnimationState.None;
 	private Boolean disableLevelReset;
 
-	public override void _Ready()
-	{
-		base._Ready();
-		disableLevelReset = false;
+    public override void _Ready()
+    {
+        base._Ready();
+        disableLevelReset = false;
 		noMove = (Sprite) GetNode("mouse2");
 		walkingLeft = (AnimatedSprite) GetNode("Mouse Walking Left");
 		walkingRight = (AnimatedSprite) GetNode("Mouse Walking Right");
 		flying = (AnimatedSprite) GetNode("Mouse Flying");
-	}
+    }
 
-	public void GetInput()//TODO Should this really be called every physics process or can we use singals? May help performance issues if they ever come up
+    public void GetInput()//TODO Should this really be called every physics process or can we use singals? May help performance issues if they ever come up
 	{
 		var colliding = GetCollidingBodies();
 		var doAnimation = true;
@@ -56,7 +56,7 @@ public class Player : Movement
 		walkingRight.Playing = doAnimation;
 		Animate();
 	}
-	public void Animate()
+    public void Animate()
 	{		
 		noMove.Visible = true;
 		walkingLeft.Visible = false;
@@ -93,14 +93,14 @@ public class Player : Movement
 		}
 	}
 
-	public override void _PhysicsProcess(float delta)
-	{
-		MoveToGrav();
+    public override void _PhysicsProcess(float delta)
+    {
+        MoveToGrav();
 		FacePlanet();
-		GetInput();
+        GetInput();
 		ApplyCentralImpulse(force);
 		force = new Vector2();
-	}
+    }
 
 	public void _on_VisibilityNotifier2D_tree_exiting()
 	{
