@@ -1,9 +1,9 @@
 [gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Source/Player.cs" type="Script" id=1]
-[ext_resource path="res://assets/Characters/flying2.png" type="Texture" id=2]
-[ext_resource path="res://assets/Characters/walking2.png" type="Texture" id=3]
-[ext_resource path="res://assets/Characters/idlefront.png" type="Texture" id=4]
+[ext_resource path="res://assets/Characters/flying.png" type="Texture" id=2]
+[ext_resource path="res://assets/Characters/MouseWalking.png" type="Texture" id=3]
+[ext_resource path="res://assets/Characters/mouse2.PNG" type="Texture" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 43.4396
@@ -12,27 +12,27 @@ height = 48.8351
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 500, 500 )
+region = Rect2( 0, 0, 72, 144 )
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 500, 0, 500, 500 )
+region = Rect2( 144, 0, 72, 144 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 1000, 0, 500, 500 )
+region = Rect2( 288, 0, 72, 144 )
 
 [sub_resource type="AtlasTexture" id=5]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 1500, 0, 500, 500 )
+region = Rect2( 432, 0, 72, 144 )
 
 [sub_resource type="AtlasTexture" id=6]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 2000, 0, 500, 500 )
+region = Rect2( 576, 0, 72, 144 )
 
 [sub_resource type="SpriteFrames" id=7]
 resource_local_to_scene = true
@@ -46,27 +46,27 @@ animations = [ {
 [sub_resource type="AtlasTexture" id=8]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 500, 500 )
+region = Rect2( 0, 0, 72, 144 )
 
 [sub_resource type="AtlasTexture" id=9]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 500, 0, 500, 500 )
+region = Rect2( 72, 0, 72, 144 )
 
 [sub_resource type="AtlasTexture" id=10]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 1000, 0, 500, 500 )
+region = Rect2( 144, 0, 72, 144 )
 
 [sub_resource type="AtlasTexture" id=11]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 1500, 0, 500, 500 )
+region = Rect2( 216, 0, 72, 144 )
 
 [sub_resource type="AtlasTexture" id=12]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 2000, 0, 500, 500 )
+region = Rect2( 288, 0, 72, 144 )
 
 [sub_resource type="SpriteFrames" id=13]
 animations = [ {
@@ -79,27 +79,27 @@ animations = [ {
 [sub_resource type="AtlasTexture" id=14]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 500, 500 )
+region = Rect2( 0, 0, 72, 144 )
 
 [sub_resource type="AtlasTexture" id=15]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 500, 0, 500, 500 )
+region = Rect2( 144, 0, 72, 144 )
 
 [sub_resource type="AtlasTexture" id=16]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 1000, 0, 500, 500 )
+region = Rect2( 288, 0, 72, 144 )
 
 [sub_resource type="AtlasTexture" id=17]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 1500, 0, 500, 500 )
+region = Rect2( 432, 0, 72, 144 )
 
 [sub_resource type="AtlasTexture" id=18]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 2000, 0, 500, 500 )
+region = Rect2( 576, 0, 72, 144 )
 
 [sub_resource type="SpriteFrames" id=19]
 animations = [ {
@@ -132,24 +132,22 @@ texture = ExtResource( 4 )
 
 [node name="Mouse Walking Left" type="AnimatedSprite" parent="."]
 visible = false
-position = Vector2( -0.284058, -3.94604 )
-scale = Vector2( 0.134299, 0.146216 )
+scale = Vector2( 1.16573, 0.921545 )
 frames = SubResource( 7 )
+frame = 1
 playing = true
 flip_h = true
 
 [node name="Mouse Flying" type="AnimatedSprite" parent="."]
 visible = false
-position = Vector2( -0.837769, -2.52271 )
-scale = Vector2( 0.138268, 0.141701 )
+position = Vector2( 0, -50 )
+scale = Vector2( 1.47073, 1.55331 )
 frames = SubResource( 13 )
 frame = 4
 playing = true
 
 [node name="Mouse Walking Right" type="AnimatedSprite" parent="."]
 visible = false
-position = Vector2( 4.17896, -3.78699 )
-scale = Vector2( 0.14231, 0.145879 )
 frames = SubResource( 19 )
 playing = true
 

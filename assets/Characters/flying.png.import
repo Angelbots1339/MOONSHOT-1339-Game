@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/idleright.png-6f388616e316deb20717bd7102c26cab.stex"
+path="res://.import/flying.png-e8c46f63956221fa00be78fe398a065b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Characters/idleright.png"
-dest_files=[ "res://.import/idleright.png-6f388616e316deb20717bd7102c26cab.stex" ]
+source_file="res://assets/Characters/flying.png"
+dest_files=[ "res://.import/flying.png-e8c46f63956221fa00be78fe398a065b.stex" ]
 
 [params]
 
