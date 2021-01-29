@@ -1,3 +1,4 @@
+using Godot;
 using System;	
 using System.Collections.Generic;	
 public class FoodItem	
@@ -26,6 +27,11 @@ public class FoodItem
 
     public string Name   { get; private set; }	
     public string ImagePath   { get; private set; }	
+
+    public Texture GetTexture()
+    {
+        return (Texture) GD.Load("res://" + ImagePath);
+    }
 
     FoodItem(string name, string imagePath) => 	
         (Name, ImagePath) = (name, imagePath);	

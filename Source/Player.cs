@@ -17,7 +17,7 @@ public class Player : Movement
 	private AnimationState direction = AnimationState.None;
 	private Boolean disableLevelReset;
 	private Sprite heldItemSprite;
-	private FoodItem heldItem = FoodItem.NONE;
+	public FoodItem HeldItem {get;set;}
 
 	public override void _Ready()
 	{
@@ -27,6 +27,7 @@ public class Player : Movement
 		walkingLeft = (AnimatedSprite) GetNode("Mouse Walking Left");
 		walkingRight = (AnimatedSprite) GetNode("Mouse Walking Right");
 		flying = (AnimatedSprite) GetNode("Mouse Flying");
+		HeldItem = FoodItem.HAMBURGER;
 		heldItemSprite = GetNode<Sprite>("HeldItem");
 	}
 
@@ -58,8 +59,8 @@ public class Player : Movement
 		walkingLeft.Playing = doAnimation;
 		walkingRight.Playing = doAnimation;
 		Animate();
-		if(heldItem.ImagePath != "") {
-			heldItemSprite.Texture = (Texture) GD.Load("res://"+heldItem.ImagePath);
+		if(HeldItem.ImagePath != "") {
+			heldItemSprite.Texture = HeldItem.GetTexture();
 			heldItemSprite.Visible = true;
 		} else {
 			heldItemSprite.Visible = false;
