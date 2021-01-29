@@ -16,6 +16,8 @@ public class Player : Movement
 	}
 	private AnimationState direction = AnimationState.None;
 	private Boolean disableLevelReset;
+	private Sprite heldItemSprite;
+	private FoodItem heldItem = FoodItem.NONE;
 
 	public override void _Ready()
 	{
@@ -25,6 +27,7 @@ public class Player : Movement
 		walkingLeft = (AnimatedSprite) GetNode("Mouse Walking Left");
 		walkingRight = (AnimatedSprite) GetNode("Mouse Walking Right");
 		flying = (AnimatedSprite) GetNode("Mouse Flying");
+		heldItemSprite = GetNode<Sprite>("HeldItem");
 	}
 
 	public void GetInput()//TODO Should this really be called every physics process or can we use singals? May help performance issues if they ever come up
@@ -55,6 +58,12 @@ public class Player : Movement
 		walkingLeft.Playing = doAnimation;
 		walkingRight.Playing = doAnimation;
 		Animate();
+		if(heldItem.ImagePath != "") {
+			heldItemSprite.Texture = (Texture) GD.Load("res://"+heldItem.ImagePath);
+			heldItemSprite.Visible = true;
+		} else {
+			heldItemSprite.Visible = false;
+		}
 	}
 	public void Animate()
 	{		
