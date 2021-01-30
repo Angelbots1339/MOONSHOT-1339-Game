@@ -20,3 +20,4 @@ screenshots/
 *.csproj
 
 .vscode/*
+.vscode/settings.json
