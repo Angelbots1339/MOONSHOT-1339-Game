@@ -1,12 +1,20 @@
 using Godot;
 using System;
 
+/*
+
+	This is the code for the level select screen and changing levels
+
+*/
+
 public class LevelSelect : GridContainer
 {
 	[Export] public String[] levelPaths;
 
 	public override void _Ready()
 	{
+		// Create the User Interface for selecting levels
+
 		for(int i = 0; i < levelPaths.Length; i++)
 		{
 			MenuButton button = new MenuButton();
@@ -29,6 +37,8 @@ class MenuButton : Button
 	
 	public void LevelSelect()
 	{
+		// The code that actually changes the level
+
 		GD.Print("Level " + Level + " selected");
 		GD.Print("Level path is " + LevelPath);
 		GetTree().ChangeScene(LevelPath);

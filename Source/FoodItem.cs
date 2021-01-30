@@ -1,6 +1,12 @@
 using Godot;
 using System;	
 using System.Collections.Generic;	
+
+/*
+
+    This is the code for creating instances of Food Items
+
+*/
 public class FoodItem	
 {	
     public static readonly FoodItem NONE = new FoodItem("None", "");	
@@ -25,9 +31,12 @@ public class FoodItem
         }	
     }	
 
+    // Get the Food Item's Name and the file path to its texture
     public string Name   { get; private set; }	
     public string ImagePath   { get; private set; }	
 
+
+    // Get the texture for the food item
     public Texture GetTexture()
     {
         return (Texture) GD.Load("res://" + ImagePath);

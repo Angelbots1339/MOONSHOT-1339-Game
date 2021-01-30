@@ -1,6 +1,12 @@
 using Godot;
 using System;
 
+/*
+
+	This is the code for creating instances of the User Interface
+
+*/
+
 public class GUI : CanvasLayer
 {
 	[Export] string mainMenuPath;

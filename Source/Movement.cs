@@ -1,9 +1,15 @@
 using Godot;
 using System;
 
-//test change
+/*
+
+	This is the code for handeling the Player's Movement
+
+*/
 public class Movement : RigidBody2D //extends rigidbody2D (instead of extends it's :)
 {
+	
+
 	[Export] public int speed = 25;
 	[Export] public float deceleration = 0.01f;
 
@@ -18,6 +24,7 @@ public class Movement : RigidBody2D //extends rigidbody2D (instead of extends it
 		force = new Vector2();
 		InitializePlanets();
 	}
+	
 	
 	private void InitializePlanets()
 	{

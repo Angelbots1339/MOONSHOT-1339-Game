@@ -1,6 +1,11 @@
 using Godot;
 using System;
 
+/*
+
+    This is the code for creating instances of Cooking Stations
+
+*/
 public class CookingStation : Area2D
 {
     public void _on_Area2D_area_entered(Area2D area) {
