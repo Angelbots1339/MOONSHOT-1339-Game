@@ -8,23 +8,19 @@ pause_mode = 2
 script = ExtResource( 1 )
 mainMenuPath = "res://Levels/MainMenu.tscn"
 
-[node name="Menu" type="HBoxContainer" parent="."]
-visible = false
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_right = 1.0
-margin_bottom = 50.0
+margin_bottom = 100.0
+grow_horizontal = 0
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Pause" type="Button" parent="Menu"]
-margin_right = 50.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 50, 50 )
-text = "Pause"
-align = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 0 )
 
 [node name="HiddenMenu" type="HBoxContainer" parent="."]
 anchor_right = 1.0
@@ -56,20 +52,24 @@ margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
 text = "Main Menu"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="Menu" type="HBoxContainer" parent="."]
+visible = false
 anchor_right = 1.0
-margin_bottom = 100.0
-grow_horizontal = 0
-script = ExtResource( 2 )
+margin_bottom = 50.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
-margin_right = 100.0
-margin_bottom = 400.0
-rect_min_size = Vector2( 100, 0 )
-[connection signal="pressed" from="Menu/Pause" to="." method="_on_Pause_pressed"]
+[node name="Pause" type="Button" parent="Menu"]
+margin_right = 50.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 50, 50 )
+text = "Pause"
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="HiddenMenu/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="HiddenMenu/Restart" to="." method="_on_Restart_pressed"]
 [connection signal="pressed" from="HiddenMenu/Main Menu" to="." method="_on_Main_Menu_pressed"]
+[connection signal="pressed" from="Menu/Pause" to="." method="_on_Pause_pressed"]
