@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bun2.png-7a80c394af43f7a78028da0cf76753bd.stex"
+path="res://.import/cheese2.png-19557ca6329eed7c4c49aff10d5a5914.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Food/bun2.png"
-dest_files=[ "res://.import/bun2.png-7a80c394af43f7a78028da0cf76753bd.stex" ]
+source_file="res://assets/Hamburger/cheese2.png"
+dest_files=[ "res://.import/cheese2.png-19557ca6329eed7c4c49aff10d5a5914.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/patty2.png-80458d163a06654f3333d2b6c47eef01.stex"
+path="res://.import/lettuce2.png-9012b4c28643baf41127e470b90999eb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Food/patty2.png"
-dest_files=[ "res://.import/patty2.png-80458d163a06654f3333d2b6c47eef01.stex" ]
+source_file="res://assets/Hamburger/lettuce2.png"
+dest_files=[ "res://.import/lettuce2.png-9012b4c28643baf41127e470b90999eb.stex" ]
 
 [params]
 

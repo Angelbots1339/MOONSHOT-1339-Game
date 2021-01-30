@@ -58,14 +58,14 @@ public class Movement : RigidBody2D //extends rigidbody2D (instead of extends it
 	}
 	
 	public void FacePlanet()
-    {
-        if(force.Length() > 0.01){
+	{
+		if(force.Length() > 0.01){
 			var error = force.Angle() - (float)Math.PI / 2 - Rotation; //makes it so the player always has it's bottom facing the planet
 			if(error > Math.PI) error = 2 * (float) Math.PI - error;
 			if(error < -Math.PI) error = 2 * (float) Math.PI + error;
 			Rotation += 0.25f * error;
 		}
-    }
+	}
 
 	public override void _PhysicsProcess(float delta)
 	{

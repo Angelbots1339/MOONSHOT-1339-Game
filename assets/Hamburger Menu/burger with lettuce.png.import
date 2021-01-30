@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hamburger2 copy.png-2b94091a4d9e3ab6f37ae46a6d8c2b0e.stex"
+path="res://.import/burger with lettuce.png-95c8c39c9fa2d133cb83c957f2577136.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Food/hamburger2 copy.png"
-dest_files=[ "res://.import/hamburger2 copy.png-2b94091a4d9e3ab6f37ae46a6d8c2b0e.stex" ]
+source_file="res://assets/Hamburger Menu/burger with lettuce.png"
+dest_files=[ "res://.import/burger with lettuce.png-95c8c39c9fa2d133cb83c957f2577136.stex" ]
 
 [params]
 
