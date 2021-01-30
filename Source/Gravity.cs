@@ -1,6 +1,11 @@
 using Godot;
 using System;
 
+/*
+
+	This is the code for the character's Gravity
+
+*/
 public class Gravity : RigidBody2D
 {
 	[Export] public float gravityForce = 40;

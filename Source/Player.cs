@@ -1,8 +1,16 @@
 using Godot;
 using System;
 
+/*
+
+	This is the code for the Character's Animation and the Player's Input
+
+*/
+
 public class Player : Movement
 {	
+	// Code for the Character's Animation
+	
 	private Sprite noMove ;
 	private AnimatedSprite walkingLeft;
 	private AnimatedSprite walkingRight;
@@ -31,6 +39,7 @@ public class Player : Movement
 		heldItemSprite = GetNode<Sprite>("HeldItem");
 	}
 
+	// Code for handeling the Player's input
 	public void GetInput()//TODO Should this really be called every physics process or can we use singals? May help performance issues if they ever come up
 	{
 		var colliding = GetCollidingBodies();
@@ -66,6 +75,8 @@ public class Player : Movement
 			heldItemSprite.Visible = false;
 		}
 	}
+
+		// More code for Animations
 	public void Animate()
 	{		
 		noMove.Visible = true;
@@ -103,6 +114,7 @@ public class Player : Movement
 		}
 	}
 
+	// Handels Physics and some of the Character's Interactions
 	public override void _PhysicsProcess(float delta)
 	{
 		MoveToGrav();

@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
+
 public class CookingStation : Area2D
 {
     [Export]
