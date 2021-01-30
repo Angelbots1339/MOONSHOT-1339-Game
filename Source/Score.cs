@@ -30,6 +30,7 @@ public class Score : Node2D
     public void setScore(int x)
     {
         myscore = x;
+        
     }
 
     public void increaseScore()
