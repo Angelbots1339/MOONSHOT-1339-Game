@@ -1,9 +1,15 @@
 using Godot;
 using System;
 
-//test change
+/*
+
+	This is the code for handeling the Player's Movement
+
+*/
 public class Movement : RigidBody2D //extends rigidbody2D (instead of extends it's :)
 {
+	
+
 	[Export] public int speed = 25;
 	[Export] public float deceleration = 0.01f;
 
@@ -18,6 +24,7 @@ public class Movement : RigidBody2D //extends rigidbody2D (instead of extends it
 		force = new Vector2();
 		InitializePlanets();
 	}
+	
 	
 	private void InitializePlanets()
 	{
@@ -51,14 +58,14 @@ public class Movement : RigidBody2D //extends rigidbody2D (instead of extends it
 	}
 	
 	public void FacePlanet()
-    {
-        if(force.Length() > 0.01){
+	{
+		if(force.Length() > 0.01){
 			var error = force.Angle() - (float)Math.PI / 2 - Rotation; //makes it so the player always has it's bottom facing the planet
 			if(error > Math.PI) error = 2 * (float) Math.PI - error;
 			if(error < -Math.PI) error = 2 * (float) Math.PI + error;
 			Rotation += 0.25f * error;
 		}
-    }
+	}
 
 	public override void _PhysicsProcess(float delta)
 	{
