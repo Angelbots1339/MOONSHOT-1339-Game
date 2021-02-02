@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class CookingStation : Area2D
 {
     [Export]
-    public string[] inputs; // Can only have one recipe because Godot has a fit with 2D arrays
+    public string[] inputs = {}; // Can only have one recipe because Godot has a fit with 2D arrays
     [Export]
     public string output;
     private List<FoodItem> inventory = new List<FoodItem>();
@@ -46,8 +46,8 @@ public class CookingStation : Area2D
         GD.Print("Filling Placeholders");
         // Fill placeholders 
         List<FoodItem> placeholders = new List<FoodItem>();
-        for(int j = 0; j < inputs.Length; j++) {
-            placeholders.Add(GetFromString(inputs[j]));
+        foreach(string input in inputs) {
+            placeholders.Add(FoodItem.getFromName(input));
         }
         GD.Print("Duplicating inventory");
         List<FoodItem> tempInventory = inventory;
@@ -74,30 +74,6 @@ public class CookingStation : Area2D
             GD.Print("Recipe met, syncing cooking station inventory");
             inventory = tempInventory;
             GD.Print("Creating Food Item " + output);
-        }
-    }
-
-    ///<summary>
-    ///This code sucks. I need help (FoodItem is not friendly).
-    ///</summary>
-    public FoodItem GetFromString(String name)
-    {
-        GD.Print("GetFromString called");
-        switch(name){
-            case "BUN":
-                return FoodItem.BUN;
-            case "CHEESE":
-                return FoodItem.CHEESE;
-            case "HAMBURGER":
-                return FoodItem.HAMBURGER;
-            case "LETTUCE":
-                return FoodItem.LETTUCE;
-            case "PATTY":
-                return FoodItem.PATTY;
-            case "TOMATO":
-                return FoodItem.TOMATO;
-            default:
-                return FoodItem.NONE;
         }
     }
 }

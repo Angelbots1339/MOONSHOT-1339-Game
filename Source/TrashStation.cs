@@ -3,12 +3,16 @@ using System;
 
 public class TrashStation : Area2D
 {
+    Area2D latestArea;
     public void _on_Area2D_area_entered(Area2D area) {
-        if(area.GetParent().Name == "Player" && Input.IsActionPressed("interact"))
+        latestArea = area;
+    }
+
+    public override void _PhysicsProcess(float delta){
+        if(latestArea != null && latestArea.GetParent().Name == "Player" && Input.IsActionPressed("interact"))
         {
-            Player player = (Player) area.GetParent();
+            Player player = (Player) latestArea.GetParent();
             player.HeldItem = FoodItem.NONE;
         }
     }
-
 }
