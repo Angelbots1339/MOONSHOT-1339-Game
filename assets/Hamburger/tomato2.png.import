@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/lettuce2.png-1e1efe56732e31c05e98b9854927a737.stex"
+path="res://.import/tomato2.png-a06b7b02a9d641a5e39384d323e5fb40.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Food/lettuce2.png"
-dest_files=[ "res://.import/lettuce2.png-1e1efe56732e31c05e98b9854927a737.stex" ]
+source_file="res://assets/Hamburger/tomato2.png"
+dest_files=[ "res://.import/tomato2.png-a06b7b02a9d641a5e39384d323e5fb40.stex" ]
 
 [params]
 
