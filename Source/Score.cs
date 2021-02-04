@@ -40,7 +40,7 @@ public class Score : Node2D
 
     public void decreaseScore()
     {
-        myscore++;
+        myscore--;
     }
 
     public void updateScore()
