@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Source/GUI.cs" type="Script" id=1]
 [ext_resource path="res://Source/CustomerMenu.cs" type="Script" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://Source/TaskContainer.cs" type="Script" id=4]
 
 [node name="GUI" type="CanvasLayer"]
 pause_mode = 2
@@ -66,6 +68,125 @@ margin_bottom = 20.0
 rect_min_size = Vector2( 50, 50 )
 text = "Pause"
 align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Task Container" type="HBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -960.0
+margin_top = -158.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Task1" type="Panel" parent="Task Container"]
+margin_right = 317.0
+margin_bottom = 158.0
+size_flags_horizontal = 3
+
+[node name="Task Texture" type="TextureRect" parent="Task Container/Task1"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -25.0
+margin_top = -25.0
+margin_right = 25.0
+margin_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 128, 128 )
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Task Name" type="Label" parent="Task Container/Task1"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -15.0
+text = "TASK TEXT"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Task2" type="Panel" parent="Task Container"]
+margin_left = 321.0
+margin_right = 638.0
+margin_bottom = 158.0
+size_flags_horizontal = 3
+
+[node name="Task Texture" type="TextureRect" parent="Task Container/Task2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -25.0
+margin_top = -25.0
+margin_right = 25.0
+margin_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 128, 128 )
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Task Name" type="Label" parent="Task Container/Task2"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -15.0
+text = "TASK TEXT"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Task3" type="Panel" parent="Task Container"]
+margin_left = 642.0
+margin_right = 960.0
+margin_bottom = 158.0
+size_flags_horizontal = 3
+
+[node name="Task Texture" type="TextureRect" parent="Task Container/Task3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -25.0
+margin_top = -25.0
+margin_right = 25.0
+margin_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 128, 128 )
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Task Name" type="Label" parent="Task Container/Task3"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -15.0
+text = "TASK TEXT"
+align = 1
+valign = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
