@@ -1,6 +1,11 @@
 using Godot;
 using System;
 
+/*
+
+This is the code for creating food Pickup Stations
+
+*/
 public class PickupStation : Area2D
 {
     Area2D latestArea;
@@ -14,6 +19,9 @@ public class PickupStation : Area2D
     }
 
     public override void _PhysicsProcess(float delta){
+
+        //Give the player food when they interact with the station
+
         if(latestArea != null && latestArea.GetParent().Name == "Player" && Input.IsActionPressed("interact"))
         {
             Player player = (Player) latestArea.GetParent();

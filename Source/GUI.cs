@@ -1,6 +1,11 @@
 using Godot;
 using System;
 
+/*
+
+This is the code for the User Interface
+
+*/
 public class GUI : Control
 {
 	[Export] string mainMenuPath;

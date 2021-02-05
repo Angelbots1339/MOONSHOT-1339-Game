@@ -2,7 +2,11 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
+/*
 
+This is the code for the Cooking Stations
+
+*/
 public class CookingStation : Area2D
 {
     [Export]

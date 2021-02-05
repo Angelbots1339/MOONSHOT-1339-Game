@@ -3,11 +3,13 @@ using System;
 
 /*
 
-	This is the code for the character's Gravity
+	This is the code for the character's Physics
 
 */
 public class Gravity : RigidBody2D
 {
+
+	// Set gravity values
 	[Export] public float gravityForce = 40;
 	[Export] public float nearGravRange = 45;
 	[Export] public Texture texture;
@@ -22,6 +24,7 @@ public class Gravity : RigidBody2D
 		return gravityForce;
 	}
 
+	// Draw the outline of where Gravity affects the player
 	public override void _Draw()
 	{
 		var color = new Color(0.5f,0.5f,0.5f,0.5f);

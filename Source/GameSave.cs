@@ -1,5 +1,11 @@
 using Godot;
 using System;
+
+/*
+
+This is the code for saving the game
+
+*/
 class GameSave : Node{
   public void saveGame(){
     Player p = GetTree().Root.GetNode("Node2D").GetNode<Player>("Player");

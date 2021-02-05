@@ -2,6 +2,11 @@ using Godot;
 using System.Collections.Generic;
 using System;
 
+/*
+
+This is the code for the Tasks on the HUD
+
+*/
 public class TaskContainer : HBoxContainer
 {
     // Declare member variables here. Examples:
