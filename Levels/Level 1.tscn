@@ -13,10 +13,11 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2( 510, 300 )
+anchor_mode = 0
 current = true
 
 [node name="planets" type="Node2D" parent="."]
+position = Vector2( 460.811, 188.361 )
 
 [node name="Planet1" parent="planets" instance=ExtResource( 5 )]
 position = Vector2( 301, 101 )
@@ -37,14 +38,15 @@ nearGravRange = 150.0
 texture = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-
-[node name="CookingStation" parent="." instance=ExtResource( 7 )]
-position = Vector2( 72.998, 432.296 )
+position = Vector2( 760.811, 488.361 )
 
 [node name="GUI" parent="." instance=ExtResource( 4 )]
 
+[node name="CookingStation" parent="." instance=ExtResource( 7 )]
+position = Vector2( 533.809, 620.657 )
+
 [node name="TrashStation" parent="." instance=ExtResource( 8 )]
-position = Vector2( 237.907, 542.112 )
+position = Vector2( 698.718, 730.473 )
 
 [node name="PickupStation" parent="." instance=ExtResource( 9 )]
-position = Vector2( 814.337, 356.742 )
+position = Vector2( 1275.15, 545.103 )

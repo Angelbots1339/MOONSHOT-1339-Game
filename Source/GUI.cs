@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class GUI : CanvasLayer
+public class GUI : Control
 {
 	[Export] string mainMenuPath;
 	HBoxContainer menu;

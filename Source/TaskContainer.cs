@@ -25,30 +25,29 @@ public class TaskContainer : HBoxContainer
         UpdateTaskList();
     }
 
+    // Call this whenever task list is updated
     private void UpdateTaskList() {
         for (int task = 0; task < NUM_TASKS; task++) {
-            if(todoFoods[task].Equals(null)) {
-                todoFoods[task] = FoodItem.NONE;
-            }
-
             if(todoFoods[task] == FoodItem.NONE) { // If index empty
-                if(task != NUM_TASKS - 1) { // Not last index
-                    todoFoods[task] = todoFoods[task + 1]; // Move next food to this index
-                    todoFoods[task + 1] = FoodItem.NONE;
-                } else if (queue.Count > 0) {
+                for(int next = task + 1; next < NUM_TASKS; next++) { // Check array
+                    if(todoFoods[next] != FoodItem.NONE) {
+                        todoFoods[task] = todoFoods[next];
+                    }
+                }
+
+                if (queue.Count > 0) {
                     todoFoods[task] = queue[0]; // Grab first in queue
                     queue.RemoveAt(0);
                 }
             }
 
             if(todoFoods[task] != FoodItem.NONE) {
-                GD.Print(todoFoods[task].Name);
                 tasks[task].GetNode<TextureRect>("Task Texture").Visible = true;
                 tasks[task].GetNode<TextureRect>("Task Texture").Texture = todoFoods[task].GetTexture();
             } else {
                 tasks[task].GetNode<TextureRect>("Task Texture").Visible = false;
             }
-            tasks[task].GetNode<Label>("Task Name").Text = "Task #" + task + ": " + todoFoods[task].Name;  
+            tasks[task].GetNode<Label>("Task Name").Text = "Task #" + (task + 1) + ": " + todoFoods[task].Name;  
             
         }
     }
