@@ -69,10 +69,12 @@ public class Player : Movement
 				} else if (Input.IsActionJustReleased("right")) {
 
 					direction = AnimationState.RightIdle;
+					idleRight.Frame = 1; 
 
 				} else if (Input.IsActionJustReleased("left")) {
 
 					direction = AnimationState.LeftIdle; 
+					idleLeft.Frame = 1; 
 
 				}
 			}
@@ -82,9 +84,13 @@ public class Player : Movement
 		if (Input.IsActionJustPressed("jump") && collidePlanets > 0)
 			force += new Vector2(0, -700).Rotated(Rotation);
 		
-		walkingLeft.Playing = doAnimation;
+		walkingLeft.Playing = doAnimation; //This is needed for all animations that have multiple frames
 		walkingRight.Playing = doAnimation;
+		idleLeft.Playing = doAnimation;
+		idleRight.Playing = doAnimation;
+
 		Animate();
+
 		if (HeldItem.ImagePath != "") {
 			heldItemSprite.Texture = HeldItem.GetTexture();
 			heldItemSprite.Visible = true;
