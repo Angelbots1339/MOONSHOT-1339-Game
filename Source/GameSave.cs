@@ -5,6 +5,8 @@ using System;
 
 This is the code for saving the game
 
+only works for position and rotation right now
+
 */
 class GameSave : Node{
   public void saveGame(){
