@@ -20,13 +20,16 @@ public class Player : Movement
 	{
 		None,
 		Left,
-		Right
+		Right, 
+		RightIdle, 
+		LeftIdle
 	}
 	private AnimationState direction = AnimationState.None;
 	private Boolean disableLevelReset;
 	private Sprite heldItemSprite;
 	public FoodItem HeldItem {get;set;}
 
+	// Different Animation states: 
 	public override void _Ready()
 	{
 		base._Ready();
@@ -57,6 +60,15 @@ public class Player : Movement
 				else if (Input.IsActionPressed("right")){
 					force += new Vector2(speed, 0).Rotated(Rotation);
 					direction = AnimationState.Right;
+
+				} else if (Input.IsActionJustReleased("right")) {
+
+					direction = AnimationState.RightIdle;
+
+				} else if (Input.IsActionJustReleased("left")) {
+
+					direction = AnimationState.LeftIdle; 
+
 				}
 			}
 		} else if(collidePlanets == 0)
@@ -106,6 +118,18 @@ public class Player : Movement
 				case AnimationState.Right:{
 					noMove.Visible = false;
 					walkingRight.Visible = true;
+					break;
+				}
+
+				case AnimationState.RightIdle:{
+					noMove.Visible = true;
+					walkingRight.Visible = false;
+					break;
+				}
+
+				case AnimationState.LeftIdle:{
+					noMove.Visible = true;
+					walkingRight.Visible = false;
 					break;
 				}
 				
