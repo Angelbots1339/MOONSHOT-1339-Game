@@ -54,8 +54,8 @@ public class Player : Movement
 		var doAnimation = true;
 		if(colliding.Count > 0){
 			doAnimation = false; //TODO add an idle left/right animation instead of pausing current animation
-			//direction = AnimationState.None;
-			if(Input.IsActionPressed("left") ^ Input.IsActionPressed("right")){
+			// Change Animation state based on keys pressed 
+			if(Input.IsActionPressed("left") ^ Input.IsActionPressed("right") ^ Input.IsActionJustReleased("right") ^ Input.IsActionJustReleased("left")){
 				doAnimation = true;
 				if (Input.IsActionPressed("left")){
 					force += new Vector2(-speed, 0).Rotated(Rotation);
