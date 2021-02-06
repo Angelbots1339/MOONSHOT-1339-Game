@@ -7,7 +7,7 @@ This is the code for saving the game
 
 */
 class GameSave : Node{
-  public void saveGame_WINDOWS(){
+  public void saveGame(){
     Player p = GetTree().Root.GetNode("Node2D").GetNode<Player>("Player");
     string posx = ""+p.Position.x;
     string posy = ""+p.Position.y;
@@ -15,7 +15,7 @@ class GameSave : Node{
     System.IO.File.WriteAllText("user://OvercookedSaveData.txt", posx+"\n"+posy+"\n"+rot);
   }
 
-  public void loadGame_WINDOWS(){
+  public void loadGame(){
     Player p = GetTree().Root.GetNode("Node2D").GetNode<Player>("Player");
     String loaded = System.IO.File.ReadAllText("user://OvercookedSaveData.txt");
     String[] args = loaded.Split("\n");
