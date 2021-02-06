@@ -76,7 +76,7 @@ public class Player : Movement
 
 				}
 			}
-		} else if(collidePlanets == 0)
+		} else if (collidePlanets == 0)
 			direction = AnimationState.None;
 
 		if (Input.IsActionJustPressed("jump") && collidePlanets > 0)
@@ -85,7 +85,7 @@ public class Player : Movement
 		walkingLeft.Playing = doAnimation;
 		walkingRight.Playing = doAnimation;
 		Animate();
-		if(HeldItem.ImagePath != "") {
+		if (HeldItem.ImagePath != "") {
 			heldItemSprite.Texture = HeldItem.GetTexture();
 			heldItemSprite.Visible = true;
 		} else {
@@ -103,7 +103,7 @@ public class Player : Movement
 		idleRight.Visible = false;
 		idleLeft.Visible = false;
 		
-		if((nearbyPlanets == 0) || (Input.IsActionPressed("jump"))) //TODO this means that while jump is pressed, no other animations play. Looks strange when walking left and holding jump. Maybe make inputs exclusive?
+		if ((nearbyPlanets == 0) || (Input.IsActionPressed("jump"))) //TODO this means that while jump is pressed, no other animations play. Looks strange when walking left and holding jump. Maybe make inputs exclusive?
 		{
 			noMove.Visible = false;
 			flying.Visible = true;
@@ -112,34 +112,26 @@ public class Player : Movement
 			switch (direction) {
 				case AnimationState.None:{
 					noMove.Visible = true;
-					walkingLeft.Visible = false;
-					walkingRight.Visible = false;
 					break;
 				}
 
 				case AnimationState.Left:{
-					noMove.Visible = false;
 					walkingLeft.Visible = true;
 					break;
 				}
 			
 				case AnimationState.Right:{
-					noMove.Visible = false;
 					walkingRight.Visible = true;
 					break;
 				}
 
 				case AnimationState.RightIdle:{
-					noMove.Visible = false;
-					walkingRight.Visible = false;
-					//idleRight.Visible = true
+					idleRight.Visible = true;
 					break;
 				}
 
 				case AnimationState.LeftIdle:{
-					noMove.Visible = false;
-					walkingLeft.Visible = false;
-					//idleLeft.Visible = true;
+					idleLeft.Visible = true;
 					break;
 				}
 				
