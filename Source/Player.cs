@@ -15,8 +15,8 @@ public class Player : Movement
 	private AnimatedSprite walkingLeft;
 	private AnimatedSprite walkingRight;
 	private AnimatedSprite flying;
-	private Sprite idleLeft;
-	private Sprite idleRight;
+	private AnimatedSprite idleLeft;
+	private AnimatedSprite idleRight;
 
 	
 	enum AnimationState
@@ -25,7 +25,7 @@ public class Player : Movement
 		Left,
 		Right, 
 		RightIdle, 
-		LeftIdle
+		LeftIdle,
 	}
 	private AnimationState direction = AnimationState.None;
 	private Boolean disableLevelReset;
@@ -40,8 +40,8 @@ public class Player : Movement
 		noMove = (Sprite) GetNode("mouse2");
 		walkingLeft = (AnimatedSprite) GetNode("Mouse Walking Left");
 		walkingRight = (AnimatedSprite) GetNode("Mouse Walking Right");
-		idleRight = (Sprite) GetNode("Mouse Idle Right");
-		idleLeft = (Sprite) GetNode("Mouse Idle Left");
+		idleRight = (AnimatedSprite) GetNode("Idle Right");
+		idleLeft = (AnimatedSprite) GetNode("idle Left");
 		flying = (AnimatedSprite) GetNode("Mouse Flying");
 		HeldItem = FoodItem.HAMBURGER;
 		heldItemSprite = GetNode<Sprite>("HeldItem");
@@ -107,6 +107,7 @@ public class Player : Movement
 		{
 			noMove.Visible = false;
 			flying.Visible = true;
+			
 		} else {
 			switch (direction) {
 				case AnimationState.None:{
@@ -131,14 +132,14 @@ public class Player : Movement
 				case AnimationState.RightIdle:{
 					noMove.Visible = false;
 					walkingRight.Visible = false;
-					idleRight.Visible = true;
+					//idleRight.Visible = true
 					break;
 				}
 
 				case AnimationState.LeftIdle:{
 					noMove.Visible = false;
 					walkingLeft.Visible = false;
-					idleLeft.Visible = true;
+					//idleLeft.Visible = true;
 					break;
 				}
 				
@@ -162,6 +163,8 @@ public class Player : Movement
 		walkingLeft.Frame = 1;
 		walkingRight.Frame = 1;
 		flying.Frame = 1;
+		idleRight.Frame = 1;
+		idleLeft.Frame = 1;
 		disableLevelReset = true;
 	}
 

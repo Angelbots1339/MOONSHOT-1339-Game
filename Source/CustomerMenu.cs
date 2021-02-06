@@ -9,7 +9,7 @@ This is the code for the Customers Orders
 
 public class CustomerMenu : Node
 {
-	private TextureRect Menu1;
+	//private TextureRect Menu1;
 
 	// Declare member variables here. Examples:
 	// private int a = 2;
