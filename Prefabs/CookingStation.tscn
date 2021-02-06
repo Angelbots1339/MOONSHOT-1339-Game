@@ -31,3 +31,4 @@ shape = SubResource( 1 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 [connection signal="area_entered" from="Area2D" to="Area2D" method="_on_Area2D_area_entered"]
+[connection signal="area_exited" from="Area2D" to="Area2D" method="_on_Area2D_area_exited"]
