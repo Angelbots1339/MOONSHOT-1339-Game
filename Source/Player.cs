@@ -15,18 +15,24 @@ public class Player : Movement
 	private AnimatedSprite walkingLeft;
 	private AnimatedSprite walkingRight;
 	private AnimatedSprite flying;
+	private Sprite idleLeft;
+	private Sprite idleRight;
+
 	
 	enum AnimationState
 	{
 		None,
 		Left,
-		Right
+		Right, 
+		RightIdle, 
+		LeftIdle
 	}
 	private AnimationState direction = AnimationState.None;
 	private Boolean disableLevelReset;
 	private Sprite heldItemSprite;
 	public FoodItem HeldItem {get;set;}
 
+	// Different Animation states: 
 	public override void _Ready()
 	{
 		base._Ready();
@@ -34,6 +40,8 @@ public class Player : Movement
 		noMove = (Sprite) GetNode("mouse2");
 		walkingLeft = (AnimatedSprite) GetNode("Mouse Walking Left");
 		walkingRight = (AnimatedSprite) GetNode("Mouse Walking Right");
+		idleRight = (Sprite) GetNode("Mouse Idle Right");
+		idleLeft = (Sprite) GetNode("Mouse Idle Left");
 		flying = (AnimatedSprite) GetNode("Mouse Flying");
 		HeldItem = FoodItem.HAMBURGER;
 		heldItemSprite = GetNode<Sprite>("HeldItem");
@@ -46,8 +54,8 @@ public class Player : Movement
 		var doAnimation = true;
 		if(colliding.Count > 0){
 			doAnimation = false; //TODO add an idle left/right animation instead of pausing current animation
-			//direction = AnimationState.None;
-			if(Input.IsActionPressed("left") ^ Input.IsActionPressed("right")){
+			// Change Animation state based on keys pressed 
+			if(Input.IsActionPressed("left") ^ Input.IsActionPressed("right") ^ Input.IsActionJustReleased("right") ^ Input.IsActionJustReleased("left")){
 				doAnimation = true;
 				if (Input.IsActionPressed("left")){
 					force += new Vector2(-speed, 0).Rotated(Rotation);
@@ -57,6 +65,15 @@ public class Player : Movement
 				else if (Input.IsActionPressed("right")){
 					force += new Vector2(speed, 0).Rotated(Rotation);
 					direction = AnimationState.Right;
+
+				} else if (Input.IsActionJustReleased("right")) {
+
+					direction = AnimationState.RightIdle;
+
+				} else if (Input.IsActionJustReleased("left")) {
+
+					direction = AnimationState.LeftIdle; 
+
 				}
 			}
 		} else if(collidePlanets == 0)
@@ -83,6 +100,8 @@ public class Player : Movement
 		walkingLeft.Visible = false;
 		walkingRight.Visible = false;
 		flying.Visible = false;
+		idleRight.Visible = false;
+		idleLeft.Visible = false;
 		
 		if((nearbyPlanets == 0) || (Input.IsActionPressed("jump"))) //TODO this means that while jump is pressed, no other animations play. Looks strange when walking left and holding jump. Maybe make inputs exclusive?
 		{
@@ -106,6 +125,20 @@ public class Player : Movement
 				case AnimationState.Right:{
 					noMove.Visible = false;
 					walkingRight.Visible = true;
+					break;
+				}
+
+				case AnimationState.RightIdle:{
+					noMove.Visible = false;
+					walkingRight.Visible = false;
+					idleRight.Visible = true;
+					break;
+				}
+
+				case AnimationState.LeftIdle:{
+					noMove.Visible = false;
+					walkingLeft.Visible = false;
+					idleLeft.Visible = true;
 					break;
 				}
 				

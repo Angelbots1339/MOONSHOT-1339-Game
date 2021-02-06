@@ -13,6 +13,8 @@ public class MainMenu : Control
 	public PopupPanel helpPanel;
 	public override void _Ready()
 	{
+		OS.WindowSize = OS.GetScreenSize(); // This overrides the automatic 1920x1080 for different sized resolutions
+		OS.CenterWindow();
 		helpPanel = GetNode<PopupPanel>("Panel/HelpPanel");
 	}
 

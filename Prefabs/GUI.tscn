@@ -1,15 +1,27 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Source/GUI.cs" type="Script" id=1]
 [ext_resource path="res://Source/CustomerMenu.cs" type="Script" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://Source/TaskContainer.cs" type="Script" id=4]
 
-[node name="GUI" type="CanvasLayer"]
+[node name="GUI" type="Node"]
 pause_mode = 2
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 mainMenuPath = "res://Levels/MainMenu.tscn"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
 anchor_right = 1.0
+margin_right = 60.0
 margin_bottom = 100.0
 grow_horizontal = 0
 script = ExtResource( 2 )
@@ -17,25 +29,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer"]
 margin_right = 100.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 0 )
 
-[node name="HiddenMenu" type="HBoxContainer" parent="."]
+[node name="HiddenMenu" type="HBoxContainer" parent="Control"]
 anchor_right = 1.0
+margin_right = 158.0
 margin_bottom = 50.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Play" type="Button" parent="HiddenMenu"]
+[node name="Play" type="Button" parent="Control/HiddenMenu"]
 margin_right = 50.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
 text = "Play"
 
-[node name="Restart" type="Button" parent="HiddenMenu"]
+[node name="Restart" type="Button" parent="Control/HiddenMenu"]
 margin_left = 54.0
 margin_right = 111.0
 margin_bottom = 50.0
@@ -45,22 +58,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Main Menu" type="Button" parent="HiddenMenu"]
+[node name="Main Menu" type="Button" parent="Control/HiddenMenu"]
 margin_left = 115.0
 margin_right = 198.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
 text = "Main Menu"
 
-[node name="Menu" type="HBoxContainer" parent="."]
+[node name="Menu" type="HBoxContainer" parent="Control"]
 visible = false
 anchor_right = 1.0
+margin_right = 10.0
 margin_bottom = 50.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Pause" type="Button" parent="Menu"]
+[node name="Pause" type="Button" parent="Control/Menu"]
 margin_right = 50.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 50, 50 )
@@ -69,7 +83,126 @@ align = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="HiddenMenu/Play" to="." method="_on_Play_pressed"]
-[connection signal="pressed" from="HiddenMenu/Restart" to="." method="_on_Restart_pressed"]
-[connection signal="pressed" from="HiddenMenu/Main Menu" to="." method="_on_Main_Menu_pressed"]
-[connection signal="pressed" from="Menu/Pause" to="." method="_on_Pause_pressed"]
+
+[node name="Task Container" type="HBoxContainer" parent="Control"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -960.0
+margin_top = -158.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Task1" type="Panel" parent="Control/Task Container"]
+margin_right = 317.0
+margin_bottom = 158.0
+size_flags_horizontal = 3
+
+[node name="Task Texture" type="TextureRect" parent="Control/Task Container/Task1"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -25.0
+margin_top = -25.0
+margin_right = 25.0
+margin_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 128, 128 )
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Task Name" type="Label" parent="Control/Task Container/Task1"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -15.0
+text = "TASK TEXT"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Task2" type="Panel" parent="Control/Task Container"]
+margin_left = 321.0
+margin_right = 638.0
+margin_bottom = 158.0
+size_flags_horizontal = 3
+
+[node name="Task Texture" type="TextureRect" parent="Control/Task Container/Task2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -25.0
+margin_top = -25.0
+margin_right = 25.0
+margin_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 128, 128 )
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Task Name" type="Label" parent="Control/Task Container/Task2"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -15.0
+text = "TASK TEXT"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Task3" type="Panel" parent="Control/Task Container"]
+margin_left = 642.0
+margin_right = 960.0
+margin_bottom = 158.0
+size_flags_horizontal = 3
+
+[node name="Task Texture" type="TextureRect" parent="Control/Task Container/Task3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -25.0
+margin_top = -25.0
+margin_right = 25.0
+margin_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 128, 128 )
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Task Name" type="Label" parent="Control/Task Container/Task3"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -15.0
+text = "TASK TEXT"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Control/HiddenMenu/Play" to="Control" method="_on_Play_pressed"]
+[connection signal="pressed" from="Control/HiddenMenu/Restart" to="Control" method="_on_Restart_pressed"]
+[connection signal="pressed" from="Control/HiddenMenu/Main Menu" to="Control" method="_on_Main_Menu_pressed"]
+[connection signal="pressed" from="Control/Menu/Pause" to="Control" method="_on_Pause_pressed"]
