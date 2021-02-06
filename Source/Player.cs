@@ -15,6 +15,9 @@ public class Player : Movement
 	private AnimatedSprite walkingLeft;
 	private AnimatedSprite walkingRight;
 	private AnimatedSprite flying;
+	private Sprite idleLeft;
+	private Sprite idleRight;
+
 	
 	enum AnimationState
 	{
@@ -37,6 +40,8 @@ public class Player : Movement
 		noMove = (Sprite) GetNode("mouse2");
 		walkingLeft = (AnimatedSprite) GetNode("Mouse Walking Left");
 		walkingRight = (AnimatedSprite) GetNode("Mouse Walking Right");
+		idleRight = (Sprite) GetNode("Mouse Idle Right");
+		idleLeft = (Sprite) GetNode("Mouse Idle Left");
 		flying = (AnimatedSprite) GetNode("Mouse Flying");
 		HeldItem = FoodItem.HAMBURGER;
 		heldItemSprite = GetNode<Sprite>("HeldItem");
@@ -95,6 +100,8 @@ public class Player : Movement
 		walkingLeft.Visible = false;
 		walkingRight.Visible = false;
 		flying.Visible = false;
+		idleRight.Visible = false;
+		idleLeft.Visible = false;
 		
 		if((nearbyPlanets == 0) || (Input.IsActionPressed("jump"))) //TODO this means that while jump is pressed, no other animations play. Looks strange when walking left and holding jump. Maybe make inputs exclusive?
 		{
@@ -122,14 +129,16 @@ public class Player : Movement
 				}
 
 				case AnimationState.RightIdle:{
-					noMove.Visible = true;
+					noMove.Visible = false;
 					walkingRight.Visible = false;
+					idleRight.Visible = true;
 					break;
 				}
 
 				case AnimationState.LeftIdle:{
-					noMove.Visible = true;
-					walkingRight.Visible = false;
+					noMove.Visible = false;
+					walkingLeft.Visible = false;
+					idleLeft.Visible = true;
 					break;
 				}
 				
