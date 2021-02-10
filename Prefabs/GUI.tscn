@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Source/GUI.cs" type="Script" id=1]
-[ext_resource path="res://Source/CustomerMenu.cs" type="Script" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://Source/TaskContainer.cs" type="Script" id=4]
 
@@ -11,6 +10,8 @@ pause_mode = 2
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 1.78174
+margin_right = 1.78174
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 1 )
@@ -24,7 +25,6 @@ anchor_right = 1.0
 margin_right = 60.0
 margin_bottom = 100.0
 grow_horizontal = 0
-script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -91,6 +91,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -960.0
 margin_top = -158.0
+margin_bottom = -4.0
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -98,7 +99,7 @@ __meta__ = {
 
 [node name="Task1" type="Panel" parent="Control/Task Container"]
 margin_right = 317.0
-margin_bottom = 158.0
+margin_bottom = 154.0
 size_flags_horizontal = 3
 
 [node name="Task Texture" type="TextureRect" parent="Control/Task Container/Task1"]
@@ -134,7 +135,7 @@ __meta__ = {
 [node name="Task2" type="Panel" parent="Control/Task Container"]
 margin_left = 321.0
 margin_right = 638.0
-margin_bottom = 158.0
+margin_bottom = 154.0
 size_flags_horizontal = 3
 
 [node name="Task Texture" type="TextureRect" parent="Control/Task Container/Task2"]
@@ -170,7 +171,7 @@ __meta__ = {
 [node name="Task3" type="Panel" parent="Control/Task Container"]
 margin_left = 642.0
 margin_right = 960.0
-margin_bottom = 158.0
+margin_bottom = 154.0
 size_flags_horizontal = 3
 
 [node name="Task Texture" type="TextureRect" parent="Control/Task Container/Task3"]
