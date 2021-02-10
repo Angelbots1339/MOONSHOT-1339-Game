@@ -40,9 +40,9 @@ public class Score : Node2D
         
     }
 
-    public void increaseScore(int y)
+    public void increaseScore(int x)
     {
-        myscore++;
+        myscore += x;
     }
 
     public void decreaseScore()
