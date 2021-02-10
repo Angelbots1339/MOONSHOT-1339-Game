@@ -40,19 +40,26 @@ public class Score : Node2D
         
     }
 
-    public void increaseScore()
+    public void increaseScore(int x)
     {
-        myscore++;
+        myscore += x;
     }
 
-    public void decreaseScore()
+    public void decreaseScore(int x)
     {
-        myscore--;
+        myscore -= x;
     }
 
     public void updateScore()
     {
         scoreLabel.Text = "Score: " + myscore;
+    }
+
+    public String toString()
+    {
+        int score = this.getScore();
+        String scoreString = score.ToString();
+        return scoreString;
     }
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
 //  public override void _Process(float delta)

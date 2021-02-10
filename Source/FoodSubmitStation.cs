@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
+
 /*
 
 This is the code for the Food Submition Stations
@@ -9,6 +10,7 @@ This is the code for the Food Submition Stations
 */
 public class FoodSubmitStation : Area2D
 {
+	public Score playerScore = new Score();
 	[Export]
 	public string[] inputs = {}; 
 	[Export]
@@ -16,8 +18,12 @@ public class FoodSubmitStation : Area2D
 	private List<FoodItem> inventory = new List<FoodItem>();
 	public Area2D area;
 	public Boolean Inbounds;
+	public string HeldFoodName;
 	public override void _Ready() {
 		area = (Area2D)GetTree().Root.GetNode("Node2D").GetNode("Player").GetNode("InteractCollision");
+
+
+		
 	}
 
 	///<summary>
@@ -44,8 +50,13 @@ public class FoodSubmitStation : Area2D
 			if(item != FoodItem.NONE) { // Don't grab item from empty inventory
 				inventory.Add(item);
 				GetParent().GetNode<Sprite>("Sprite").Texture = item.GetTexture();
-				player.HeldItem = FoodItem.NONE;
+				
+				HeldFoodName = player.HeldItem.Name;
 				SubmitFood();
+				
+				
+				
+				player.HeldItem = FoodItem.NONE;
 			}
 		}
 	}
@@ -56,8 +67,18 @@ public class FoodSubmitStation : Area2D
 	private void SubmitFood() {
 		GD.Print("Submitting Food");
 
+		if (HeldFoodName == FoodItem.HAMBURGER.Name) {
 
-    //Code for food submition goes here
+			playerScore.increaseScore(1);
+
+		} else if (HeldFoodName == FoodItem.BUN.Name){
+
+			playerScore.increaseScore(1);
+
+		}
+
+
+    
 		
 	}
 }
