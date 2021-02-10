@@ -15,13 +15,10 @@ public class Player : Movement
 	private AnimatedSprite walkingLeft;
 	private AnimatedSprite walkingRight;
 	private AnimatedSprite flying;
-<<<<<<< HEAD
 	private Score playerScore;
-=======
 	private AnimatedSprite idleLeft;
 	private AnimatedSprite idleRight;
 
->>>>>>> 9e1ae5c612283273dc89e7c8431863e6399ed6b2
 	
 	enum AnimationState
 	{
