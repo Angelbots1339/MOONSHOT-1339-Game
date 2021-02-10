@@ -18,6 +18,10 @@ public class PickupStation : Area2D
         latestArea = null;
     }
 
+    public override void _Ready() {
+        ((Sprite) GetNode("PickupItem")).Texture = FoodItem.getFromName(foodName).GetTexture();
+    }
+
     public override void _PhysicsProcess(float delta){
 
         //Give the player food when they interact with the station
