@@ -53,9 +53,9 @@ public class Player : Movement
 		var colliding = GetCollidingBodies();
 		var doAnimation = true;
 		if(colliding.Count > 0){
-			doAnimation = false; //TODO add an idle left/right animation instead of pausing current animation
+			doAnimation = false;
 			// Change Animation state based on keys pressed 
-			if(Input.IsActionPressed("left") ^ Input.IsActionPressed("right") ^ Input.IsActionJustReleased("right") ^ Input.IsActionJustReleased("left")){
+			if(Input.IsActionPressed("left") ^ Input.IsActionPressed("right")){
 				doAnimation = true;
 				if (Input.IsActionPressed("left")){
 					force += new Vector2(-speed, 0).Rotated(Rotation);
@@ -66,20 +66,20 @@ public class Player : Movement
 					force += new Vector2(speed, 0).Rotated(Rotation);
 					direction = AnimationState.Right;
 
-				} else if (Input.IsActionJustReleased("right")) {
-
-					direction = AnimationState.RightIdle;
-					idleRight.Frame = 1; 
-
-				} else if (Input.IsActionJustReleased("left")) {
-
-					direction = AnimationState.LeftIdle; 
-					idleLeft.Frame = 1; 
-
 				}
 			}
-		} else if (collidePlanets == 0)
+			if (!doAnimation){
+				if(direction == AnimationState.Right) {
+					direction = AnimationState.RightIdle;
+					idleRight.Frame = 1;
+				} else if (direction == AnimationState.Left) {
+					direction = AnimationState.LeftIdle; 
+					idleLeft.Frame = 1;
+				}
+			}
+		} else if (collidePlanets == 0){
 			direction = AnimationState.None;
+		}
 
 		if (Input.IsActionJustPressed("jump") && collidePlanets > 0)
 			force += new Vector2(0, -700).Rotated(Rotation);
@@ -102,7 +102,7 @@ public class Player : Movement
 		// More code for Animations
 	public void Animate()
 	{		
-		noMove.Visible = true;
+		noMove.Visible = false;
 		walkingLeft.Visible = false;
 		walkingRight.Visible = false;
 		flying.Visible = false;

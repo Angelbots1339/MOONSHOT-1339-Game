@@ -147,7 +147,6 @@ visible = false
 position = Vector2( -0.471924, -5.42725 )
 scale = Vector2( 0.256, 0.276 )
 frames = SubResource( 6 )
-frame = 1
 playing = true
 flip_h = true
 
@@ -156,7 +155,7 @@ visible = false
 position = Vector2( -1.65784, -1.77441 )
 scale = Vector2( 0.27, 0.276 )
 frames = SubResource( 11 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="Mouse Walking Right" type="AnimatedSprite" parent="."]
@@ -164,12 +163,11 @@ visible = false
 position = Vector2( 0.764771, -2.57361 )
 scale = Vector2( 0.256, 0.276 )
 frames = SubResource( 16 )
+frame = 3
 playing = true
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( 1.17984, -2.00574 )
-
-[node name="HeldItem" type="Sprite" parent="."]
 
 [node name="Idle Right" type="AnimatedSprite" parent="."]
 visible = false
@@ -183,5 +181,7 @@ position = Vector2( -1.76965, -1.74414 )
 scale = Vector2( 0.264, 0.274 )
 frames = SubResource( 20 )
 flip_h = true
+
+[node name="HeldItem" type="Sprite" parent="."]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="tree_exiting" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_tree_exiting"]
