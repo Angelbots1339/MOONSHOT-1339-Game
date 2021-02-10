@@ -1,6 +1,11 @@
 using Godot;
 using System;
 
+/*
+
+This is the code for the Score
+
+*/
 public class Score : Node2D
 {
     // Declare member variables here. Examples:
@@ -14,6 +19,7 @@ public class Score : Node2D
     public override void _Ready()
     {
 
+        // Create Score on HUD
         scoreLabel = new Label();
         scoreLabel.Show();
         scoreLabel.Text = "Score: 0";
@@ -22,6 +28,7 @@ public class Score : Node2D
         scoreLabel.Set("Score: 0", scoreLabel);
     }
 
+    //Update the current score
     public int getScore()
     {
         return myscore;

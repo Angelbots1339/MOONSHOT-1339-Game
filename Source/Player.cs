@@ -15,19 +15,28 @@ public class Player : Movement
 	private AnimatedSprite walkingLeft;
 	private AnimatedSprite walkingRight;
 	private AnimatedSprite flying;
+<<<<<<< HEAD
 	private Score playerScore;
+=======
+	private AnimatedSprite idleLeft;
+	private AnimatedSprite idleRight;
+
+>>>>>>> 9e1ae5c612283273dc89e7c8431863e6399ed6b2
 	
 	enum AnimationState
 	{
 		None,
 		Left,
-		Right
+		Right, 
+		RightIdle, 
+		LeftIdle,
 	}
 	private AnimationState direction = AnimationState.None;
 	private Boolean disableLevelReset;
 	private Sprite heldItemSprite;
 	public FoodItem HeldItem {get;set;}
 
+	// Different Animation states: 
 	public override void _Ready()
 	{
 		base._Ready();
@@ -35,6 +44,8 @@ public class Player : Movement
 		noMove = (Sprite) GetNode("mouse2");
 		walkingLeft = (AnimatedSprite) GetNode("Mouse Walking Left");
 		walkingRight = (AnimatedSprite) GetNode("Mouse Walking Right");
+		idleRight = (AnimatedSprite) GetNode("Idle Right");
+		idleLeft = (AnimatedSprite) GetNode("idle Left");
 		flying = (AnimatedSprite) GetNode("Mouse Flying");
 		HeldItem = FoodItem.HAMBURGER;
 		heldItemSprite = GetNode<Sprite>("HeldItem");
@@ -49,8 +60,8 @@ public class Player : Movement
 		var colliding = GetCollidingBodies();
 		var doAnimation = true;
 		if(colliding.Count > 0){
-			doAnimation = false; //TODO add an idle left/right animation instead of pausing current animation
-			//direction = AnimationState.None;
+			doAnimation = false;
+			// Change Animation state based on keys pressed 
 			if(Input.IsActionPressed("left") ^ Input.IsActionPressed("right")){
 				doAnimation = true;
 				if (Input.IsActionPressed("left")){
@@ -61,18 +72,33 @@ public class Player : Movement
 				else if (Input.IsActionPressed("right")){
 					force += new Vector2(speed, 0).Rotated(Rotation);
 					direction = AnimationState.Right;
+
 				}
 			}
-		} else if(collidePlanets == 0)
+			if (!doAnimation){
+				if(direction == AnimationState.Right) {
+					direction = AnimationState.RightIdle;
+					idleRight.Frame = 1;
+				} else if (direction == AnimationState.Left) {
+					direction = AnimationState.LeftIdle; 
+					idleLeft.Frame = 1;
+				}
+			}
+		} else if (collidePlanets == 0){
 			direction = AnimationState.None;
+		}
 
 		if (Input.IsActionJustPressed("jump") && collidePlanets > 0)
 			force += new Vector2(0, -700).Rotated(Rotation);
 		
-		walkingLeft.Playing = doAnimation;
+		walkingLeft.Playing = doAnimation; //This is needed for all animations that have multiple frames
 		walkingRight.Playing = doAnimation;
+		idleLeft.Playing = doAnimation;
+		idleRight.Playing = doAnimation;
+
 		Animate();
-		if(HeldItem.ImagePath != "") {
+
+		if (HeldItem.ImagePath != "") {
 			heldItemSprite.Texture = HeldItem.GetTexture();
 			heldItemSprite.Visible = true;
 		} else {
@@ -83,33 +109,42 @@ public class Player : Movement
 		// More code for Animations
 	public void Animate()
 	{		
-		noMove.Visible = true;
+		noMove.Visible = false;
 		walkingLeft.Visible = false;
 		walkingRight.Visible = false;
 		flying.Visible = false;
+		idleRight.Visible = false;
+		idleLeft.Visible = false;
 		
-		if((nearbyPlanets == 0) || (Input.IsActionPressed("jump"))) //TODO this means that while jump is pressed, no other animations play. Looks strange when walking left and holding jump. Maybe make inputs exclusive?
+		if ((nearbyPlanets == 0) || (Input.IsActionPressed("jump"))) //TODO this means that while jump is pressed, no other animations play. Looks strange when walking left and holding jump. Maybe make inputs exclusive?
 		{
 			noMove.Visible = false;
 			flying.Visible = true;
+			
 		} else {
 			switch (direction) {
 				case AnimationState.None:{
 					noMove.Visible = true;
-					walkingLeft.Visible = false;
-					walkingRight.Visible = false;
 					break;
 				}
 
 				case AnimationState.Left:{
-					noMove.Visible = false;
 					walkingLeft.Visible = true;
 					break;
 				}
 			
 				case AnimationState.Right:{
-					noMove.Visible = false;
 					walkingRight.Visible = true;
+					break;
+				}
+
+				case AnimationState.RightIdle:{
+					idleRight.Visible = true;
+					break;
+				}
+
+				case AnimationState.LeftIdle:{
+					idleLeft.Visible = true;
 					break;
 				}
 				
@@ -133,6 +168,8 @@ public class Player : Movement
 		walkingLeft.Frame = 1;
 		walkingRight.Frame = 1;
 		flying.Frame = 1;
+		idleRight.Frame = 1;
+		idleLeft.Frame = 1;
 		disableLevelReset = true;
 	}
 
