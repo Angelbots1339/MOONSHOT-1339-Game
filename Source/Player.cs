@@ -15,7 +15,7 @@ public class Player : Movement
 	private AnimatedSprite walkingLeft;
 	private AnimatedSprite walkingRight;
 	private AnimatedSprite flying;
-	private Score playerScore;
+	public Score playerScore;
 	private AnimatedSprite idleLeft;
 	private AnimatedSprite idleRight;
 
