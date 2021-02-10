@@ -45,9 +45,9 @@ public class Score : Node2D
         myscore += x;
     }
 
-    public void decreaseScore()
+    public void decreaseScore(int x)
     {
-        myscore--;
+        myscore -= x;
     }
 
     public void updateScore()
