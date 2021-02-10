@@ -33,11 +33,7 @@ public class GUI : Control
 	}
 	
 	public void _on_Help_pressed() {
-		helpPanel.Visible = true;
-	}
-
-	public void _on_Exit_pressed() {
-		helpPanel.Visible = false;
+		helpPanel.Visible = !helpPanel.Visible;
 	}
 
 	public void _on_Play_pressed()

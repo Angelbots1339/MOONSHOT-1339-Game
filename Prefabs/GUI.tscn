@@ -209,28 +209,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Control/HelpPanel"]
+[node name="RecipeList" type="VBoxContainer" parent="Control/HelpPanel"]
 anchor_right = 1.0
-anchor_bottom = 0.996
-margin_left = 4.0
-margin_top = 4.0
-margin_right = -4.0
-margin_bottom = -0.312073
+anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "This is the help page"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Exit" type="Button" parent="Control/HelpPanel/Label"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -35.0
-margin_bottom = 35.0
-text = "Exit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -239,4 +222,3 @@ __meta__ = {
 [connection signal="pressed" from="Control/HiddenMenu/Main Menu" to="Control" method="_on_Main_Menu_pressed"]
 [connection signal="pressed" from="Control/Menu/Pause" to="Control" method="_on_Pause_pressed"]
 [connection signal="pressed" from="Control/Menu/Help" to="Control" method="_on_Help_pressed"]
-[connection signal="pressed" from="Control/HelpPanel/Label/Exit" to="Control" method="_on_Exit_pressed"]
