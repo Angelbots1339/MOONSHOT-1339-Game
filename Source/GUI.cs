@@ -11,11 +11,13 @@ public class GUI : Control
 	[Export] string mainMenuPath;
 	HBoxContainer menu;
 	HBoxContainer hiddenMenu;
-	//child node popup menu 
+	//child node popup menu
+	PopupPanel helpPanel;
 	public override void _Ready()
 	{
 		menu = GetNode<HBoxContainer>("Menu");
 		hiddenMenu = GetNode<HBoxContainer>("HiddenMenu");
+		helpPanel = GetNode<PopupPanel>("HelpPanel");
 		ShowMenu(true);
 	}
 
@@ -28,6 +30,14 @@ public class GUI : Control
 	{
 		ShowMenu(false);
 		GetTree().Paused = true;
+	}
+	
+	public void _on_Help_pressed() {
+		helpPanel.Visible = true;
+	}
+
+	public void _on_Exit_pressed() {
+		helpPanel.Visible = false;
 	}
 
 	public void _on_Play_pressed()
