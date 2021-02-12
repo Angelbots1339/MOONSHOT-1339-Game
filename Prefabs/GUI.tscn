@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Source/GUI.cs" type="Script" id=1]
+[ext_resource path="res://assets/planets/planet earth.png" type="Texture" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://Source/TaskContainer.cs" type="Script" id=4]
 
@@ -10,8 +11,10 @@ pause_mode = 2
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1.78174
-margin_right = 1.78174
+margin_left = 3.90076
+margin_top = 2.1189
+margin_right = 3.90076
+margin_bottom = 2.1189
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 1 )
@@ -203,6 +206,20 @@ valign = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Customers" type="HBoxContainer" parent="."]
+margin_left = 1754.0
+margin_right = 1918.0
+margin_bottom = 159.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Customers"]
+margin_right = 400.0
+margin_bottom = 400.0
+texture = ExtResource( 2 )
+stretch_mode = 1
 [connection signal="pressed" from="Control/HiddenMenu/Play" to="Control" method="_on_Play_pressed"]
 [connection signal="pressed" from="Control/HiddenMenu/Restart" to="Control" method="_on_Restart_pressed"]
 [connection signal="pressed" from="Control/HiddenMenu/Main Menu" to="Control" method="_on_Main_Menu_pressed"]
