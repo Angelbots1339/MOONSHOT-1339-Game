@@ -13,12 +13,12 @@ class GameSave : Node{
     Player p = GetTree().Root.GetNode("Node2D").GetNode<Player>("Player");
     float[] args = {p.Position.x, p.Position.y, p.Rotation, p.playerScore.getScore()};//add to that list: Godot.currentLevel() like function to keep track of progress
     //string currentLvl = Godot.getCurrentLevel();
-    System.IO.File.WriteAllText("user://OvercookedSaveData.txt", String.Join("\n", args));//+"\n"+currentLvl
+    System.IO.File.WriteAllText(@"Persistent/SaveData.txt", String.Join("\n", args));//+"\n"+currentLvl
   }
 
   public void loadGame(){
     Player p = GetTree().Root.GetNode("Node2D").GetNode<Player>("Player");
-    String loaded = System.IO.File.ReadAllText("user://OvercookedSaveData.txt");
+    String loaded = System.IO.File.ReadAllText(@"Persistent/SaveData.txt");
     string[] args = loaded.Split("\n");
 
     float x = float.Parse(args[0]);
