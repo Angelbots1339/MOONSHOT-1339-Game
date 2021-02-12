@@ -1,7 +1,12 @@
 using Godot;
 using System.Collections.Generic;
+using System.IO;
+using System;
+using System.Text;
 
 public class Recipe {
+
+    const string recipePath = @"Persistent/Recipes.txt";
 
     char cookingStationDelimiter = ':';
     char foodIODelimiter = '=';
@@ -30,9 +35,27 @@ public class Recipe {
         }
     }
 
+    public string[] readRecipiesFromFile(string filePath) {
+        string lines = System.IO.File.ReadAllText(filePath, Encoding.UTF8);
+        return lines.Split('\n');
+    }
+
+    public void printRecipies() {
+        string[] file = readRecipiesFromFile(recipePath);
+        foreach (string i in file) {
+            GD.Print(i);
+        }
+    }
+
     public Recipe(string toParse) {
         InputFoodItems = new List<FoodItem>();
         parseString(toParse);
+        convertToFood();
+    }
+
+    public Recipe(int line) {
+        InputFoodItems = new List<FoodItem>();
+        parseString(readRecipiesFromFile(recipePath)[line]);
         convertToFood();
     }
 }
