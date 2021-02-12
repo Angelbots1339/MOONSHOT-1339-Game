@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Source/GUI.cs" type="Script" id=1]
-[ext_resource path="res://assets/planets/planet earth.png" type="Texture" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://Prefabs/Task.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Source/TaskContainer.cs" type="Script" id=4]
 
 [node name="GUI" type="Node"]
@@ -94,112 +93,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Task1" type="Panel" parent="Control/Task Container"]
+[node name="Task1" parent="Control/Task Container" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_right = 637.0
 margin_bottom = 162.0
-size_flags_horizontal = 3
 
-[node name="Task Texture" type="TextureRect" parent="Control/Task Container/Task1"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -25.0
-margin_top = -25.0
-margin_right = 25.0
-margin_bottom = 25.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_min_size = Vector2( 128, 128 )
-texture = ExtResource( 3 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Task Name" type="Label" parent="Control/Task Container/Task1"]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -15.0
-text = "TASK TEXT"
-align = 1
-valign = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Task2" type="Panel" parent="Control/Task Container"]
+[node name="Task2" parent="Control/Task Container" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 641.0
 margin_right = 1278.0
 margin_bottom = 162.0
-size_flags_horizontal = 3
 
-[node name="Task Texture" type="TextureRect" parent="Control/Task Container/Task2"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -25.0
-margin_top = -25.0
-margin_right = 25.0
-margin_bottom = 25.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_min_size = Vector2( 128, 128 )
-texture = ExtResource( 3 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Task Name" type="Label" parent="Control/Task Container/Task2"]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -15.0
-text = "TASK TEXT"
-align = 1
-valign = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Task3" type="Panel" parent="Control/Task Container"]
+[node name="Task3" parent="Control/Task Container" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 1282.0
 margin_right = 1920.0
 margin_bottom = 162.0
-size_flags_horizontal = 3
-
-[node name="Task Texture" type="TextureRect" parent="Control/Task Container/Task3"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -25.0
-margin_top = -25.0
-margin_right = 25.0
-margin_bottom = 25.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_min_size = Vector2( 128, 128 )
-texture = ExtResource( 3 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Task Name" type="Label" parent="Control/Task Container/Task3"]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -15.0
-text = "TASK TEXT"
-align = 1
-valign = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HelpPanel" type="PopupPanel" parent="Control"]
 visible = true
@@ -215,6 +127,10 @@ __meta__ = {
 [node name="RecipeList" type="VBoxContainer" parent="Control/HelpPanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {

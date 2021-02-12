@@ -13,6 +13,11 @@ public class GUI : Control
 	HBoxContainer hiddenMenu;
 	//child node popup menu
 	PopupPanel helpPanel;
+
+	
+	
+	
+	
 	public override void _Ready()
 	{
 		menu = GetNode<HBoxContainer>("Menu");
@@ -21,6 +26,8 @@ public class GUI : Control
 		ShowMenu(true);
 	}
 
+	
+	
 	private void ShowMenu(Boolean visible) {
 		menu.Visible = visible;
 		hiddenMenu.Visible = !visible;
