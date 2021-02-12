@@ -6,11 +6,11 @@ using System;
 This is the code for creating food Pickup Stations
 
 */
-public class PickupStation : Area2D
+public class Table : Area2D
 {
     Area2D latestArea;
 
-    [Export] public string foodName;
+    public string foodName = "None";
     public void _on_Area2D_area_entered(Area2D area) {
         latestArea = area;
     }
@@ -18,18 +18,17 @@ public class PickupStation : Area2D
         latestArea = null;
     }
 
-    public override void _Ready() {
-        ((Sprite) GetNode("PickupItem")).Texture = FoodItem.getFromName(foodName).GetTexture();
-    }
-
     public override void _PhysicsProcess(float delta){
 
         //Give the player food when they interact with the station
 
-        if(latestArea != null && latestArea.GetParent().Name == "Player" && Input.IsActionPressed("interact"))
+        if(latestArea != null && latestArea.GetParent().Name == "Player" && Input.IsActionJustPressed("interact"))
         {
             Player player = (Player) latestArea.GetParent();
-            if(player.HeldItem == FoodItem.NONE) player.HeldItem = FoodItem.getFromName(foodName);
+            var temp = player.HeldItem;
+            player.HeldItem = FoodItem.getFromName(foodName);
+            foodName = temp.Name;
+            ((Sprite) GetNode("PickupItem")).Texture = FoodItem.getFromName(foodName).GetTexture();
         }
     }
 }

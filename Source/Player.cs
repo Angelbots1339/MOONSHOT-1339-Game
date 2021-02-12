@@ -15,6 +15,7 @@ public class Player : Movement
 	private AnimatedSprite walkingLeft;
 	private AnimatedSprite walkingRight;
 	private AnimatedSprite flying;
+	public Score playerScore;
 	private AnimatedSprite idleLeft;
 	private AnimatedSprite idleRight;
 
@@ -45,6 +46,9 @@ public class Player : Movement
 		flying = (AnimatedSprite) GetNode("Mouse Flying");
 		HeldItem = FoodItem.HAMBURGER;
 		heldItemSprite = GetNode<Sprite>("HeldItem");
+		playerScore = new Score();
+		playerScore.setScore(10);
+		GD.Print("Score on load: " + playerScore.toString());
 	}
 
 	// Code for handeling the Player's input
@@ -169,5 +173,6 @@ public class Player : Movement
 	public void _on_VisibilityNotifier2D_screen_exited()
 	{
 		if(!disableLevelReset) GetTree().ReloadCurrentScene();
+
 	}
 }

@@ -5,10 +5,10 @@ using System.Collections.Generic;
 
 /*
 
-This is the code for the Food Submition Stations
+This is the code for the Stations where you can store Food. 
 
 */
-public class FoodSubmitStation : Area2D
+public class FoodRestingStation : Area2D
 {
 	public Score playerScore = new Score();
 	[Export]
@@ -27,32 +27,32 @@ public class FoodSubmitStation : Area2D
 	}
 
 	///<summary>
-	/// When a player interacts with the station, take the food and submit it
+	/// When a player interacts with the station, take the food and set it down
 	///</summary>
 	public void _on_Area2D_area_entered(Area2D area)
 	{
 		Inbounds = true;
-		GD.Print("Player collided with Food Submition Station");
+		
 
 	}
 	private void _on_Area2D_area_exited(Area2D area)
 {
 	Inbounds = false;
-		GD.Print("Player left Food Submition Station");
+		
 }
 	
 	public override void _PhysicsProcess(float delta){
 		if (Input.IsActionPressed("interact") && Inbounds)
 		{
 			Player player = (Player) area.GetParent();
-			GD.Print("Player collided with Food Submition Station");
+			
 			FoodItem item = player.HeldItem;
 			if(item != FoodItem.NONE) { // Don't grab item from empty inventory
 				inventory.Add(item);
 				GetParent().GetNode<Sprite>("Sprite").Texture = item.GetTexture();
 				
 				HeldFoodName = player.HeldItem.Name;
-				SubmitFood();
+				RestFood();
 				
 				
 				
@@ -64,18 +64,8 @@ public class FoodSubmitStation : Area2D
 	///<summary>
 	/// When food is submitted... 
 	///</summary>
-	private void SubmitFood() {
-		GD.Print("Submitting Food");
-
-		if (HeldFoodName == FoodItem.HAMBURGER.Name) {
-
-			playerScore.increaseScore(1);
-
-		} else if (HeldFoodName == FoodItem.BUN.Name){
-
-			playerScore.increaseScore(1);
-
-		}
+	private void RestFood() {
+		GD.Print("Resting Food");
 
 
     
