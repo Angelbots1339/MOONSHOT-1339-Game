@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Source/Task.cs" type="Script" id=1]
+
+[node name="Task" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SampleTask" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TaskTexture" type="TextureRect" parent="SampleTask"]
+margin_right = 342.0
+margin_bottom = 129.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TaskName" type="Label" parent="SampleTask"]
+margin_top = 153.884
+margin_right = 342.0
+margin_bottom = 217.884
+size_flags_horizontal = 3
+size_flags_vertical = 6
