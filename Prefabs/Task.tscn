@@ -5,6 +5,7 @@
 [node name="Task" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = -1820.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 1 )
@@ -15,6 +16,8 @@ __meta__ = {
 [node name="SampleTask" type="Panel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = 800.0
+margin_bottom = -180.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -22,8 +25,8 @@ __meta__ = {
 }
 
 [node name="TaskTexture" type="TextureRect" parent="SampleTask"]
-margin_right = 342.0
-margin_bottom = 129.0
+margin_right = 900.0
+margin_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -31,8 +34,13 @@ __meta__ = {
 }
 
 [node name="TaskName" type="Label" parent="SampleTask"]
-margin_top = 153.884
-margin_right = 342.0
-margin_bottom = 217.884
+margin_top = 600.0
+margin_right = 900.0
+margin_bottom = 900.0
+rect_scale = Vector2( 10, 22 )
 size_flags_horizontal = 3
 size_flags_vertical = 6
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

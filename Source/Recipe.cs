@@ -7,11 +7,11 @@ using System.Text;
 
 public class Recipe {
 
-    const string recipePath = @"Persistent/Recipes.txt";
+	const string recipePath = @"Persistent/Recipes.txt";
 
-    char cookingStationDelimiter = ':';
-    char foodIODelimiter = '=';
-    char foodItemDelimiter = '+';
+	char cookingStationDelimiter = ':';
+	char foodIODelimiter = '=';
+	char foodItemDelimiter = '+';
 
 	public string CookingStationType {get; private set;} // Currently redundant
 	public List<string> Inputs {get; private set;}
@@ -36,27 +36,27 @@ public class Recipe {
 		}
 	}
 
-    public string[] readRecipiesFromFile(string filePath) {
-        string lines = System.IO.File.ReadAllText(filePath, Encoding.UTF8);
-        return lines.Split('\n');
-    }
+	public string[] readRecipiesFromFile(string filePath) {
+		string lines = System.IO.File.ReadAllText(filePath, Encoding.UTF8);
+		return lines.Split('\n');
+	}
 
-    public void printRecipies() {
-        string[] file = readRecipiesFromFile(recipePath);
-        foreach (string i in file) {
-            GD.Print(i);
-        }
-    }
+	public void printRecipies() {
+		string[] file = readRecipiesFromFile(recipePath);
+		foreach (string i in file) {
+			GD.Print(i);
+		}
+	}
 
-    public Recipe(string toParse) {
-        InputFoodItems = new List<FoodItem>();
-        parseString(toParse);
-        convertToFood();
-    }
+	public Recipe(string toParse) {
+		InputFoodItems = new List<FoodItem>();
+		parseString(toParse);
+		convertToFood();
+	}
 
-    public Recipe(int line) {
-        InputFoodItems = new List<FoodItem>();
-        parseString(readRecipiesFromFile(recipePath)[line]);
-        convertToFood();
-    }
+	public Recipe(int line) {
+		InputFoodItems = new List<FoodItem>();
+		parseString(readRecipiesFromFile(recipePath)[line]);
+		convertToFood();
+	}
 }
