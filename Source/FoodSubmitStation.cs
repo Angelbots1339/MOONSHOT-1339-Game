@@ -13,14 +13,19 @@ public class FoodSubmitStation : Area2D
 {
 	
 
-	public string[] inputs = {}; 
-	public string output;
+	
 	private List<FoodItem> inventory = new List<FoodItem>();
-	public Area2D area;
-	public Boolean Inbounds;
-	public string HeldFoodName;
+	private Area2D area;
+	private Boolean Inbounds;
+	private string HeldFoodName;
+
+
+	private Player; 
+
 	public override void _Ready() {
 		area = (Area2D)GetTree().Root.GetNode("Node2D").GetNode("Player").GetNode("InteractCollision");
+
+		player = (Player) area.GetParent();
 
 
 		
@@ -44,7 +49,7 @@ public class FoodSubmitStation : Area2D
 	public override void _PhysicsProcess(float delta){
 		if (Input.IsActionPressed("interact") && Inbounds)
 		{
-			Player player = (Player) area.GetParent();
+			
 			
 			FoodItem item = player.HeldItem;
 			if(item != FoodItem.NONE) { // Don't grab item from empty inventory
