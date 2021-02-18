@@ -1,7 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
-using Score; 
+
 
 
 /*
@@ -11,10 +11,9 @@ This is the code for the Food Submition Stations
 */
 public class FoodSubmitStation : Area2D
 {
-	public Score playerScore = new Score();
-	[Export]
+	
+
 	public string[] inputs = {}; 
-	[Export]
 	public string output;
 	private List<FoodItem> inventory = new List<FoodItem>();
 	public Area2D area;
@@ -70,11 +69,12 @@ public class FoodSubmitStation : Area2D
 
 		if (HeldFoodName == FoodItem.HAMBURGER.Name) { //Just add Else-if's for each food item that can get submitted
 
-			playerScore.increaseScore(1); //Custom scores per item submitted
+			GetTree().Root.GetNode("Node2D").GetNode<Player>("Player").playerScore.increaseScore(1);
 			player.HeldItem = FoodItem.NONE;
 		} else if (HeldFoodName == FoodItem.BUN.Name){
 
-			playerScore.increaseScore(1);
+			GetTree().Root.GetNode("Node2D").GetNode<Player>("Player").playerScore.increaseScore(1);
+
 			player.HeldItem = FoodItem.NONE;
 		}
 
