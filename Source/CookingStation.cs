@@ -32,13 +32,10 @@ public class CookingStation : Area2D
 	public void _on_Area2D_area_entered(Area2D area)
 	{
 		Inbounds = true;
-		GD.Print("Player collided with Cooking Station");
-
 	}
 	private void _on_Area2D_area_exited(Area2D area)
 	{
 		Inbounds = false;
-		GD.Print("Player left Cooking Station");
 	}
 	
 	public override void _PhysicsProcess(float delta){
@@ -49,7 +46,7 @@ public class CookingStation : Area2D
 			if(item != FoodItem.NONE) { // Don't grab item from empty inventory
 				inventory.Add(item);
 				player.HeldItem = FoodItem.NONE;
-				CheckOutput();
+				CheckOutput();	
 			}
 		}
 	}
@@ -62,16 +59,10 @@ public class CookingStation : Area2D
 			Recipe currentRecipe = recipies[i];
 			List<FoodItem> inputs = currentRecipe.InputFoodItems;
 			FoodItem output = currentRecipe.OutputFoodItem;
-			GD.Print("Checking output on recipe " + i);
-			GD.Print("Recipe is" );
-			foreach(FoodItem item in inputs) {
-				GD.Print(item.Name);
-			}
-			GD.Print("Output is " + output.Name);
 
 			// If inventory is smaller than the recipe, we can check the next one
 			if(inventory.Count < inputs.Count) {
-				GD.Print("Station inventory too small with " + inventory.Count + " items filling " + inputs.Count + " slots");
+				continue;
 			}
 
 			// Fill placeholders 
@@ -93,12 +84,9 @@ public class CookingStation : Area2D
 
 			if(complete) {
 				inventory = tempInventory;
-				GD.Print("Creating Food Item " + output.Name);
 				GetParent().GetNode<Sprite>("Sprite").Texture = output.GetTexture();
 				GD.PushWarning("Unimplemented method to create item goes here");
 			}
 		}
 	}
 }
-
-
