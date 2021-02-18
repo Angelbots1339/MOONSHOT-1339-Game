@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using Score; 
 
 
 /*
@@ -32,20 +33,20 @@ public class FoodSubmitStation : Area2D
 	public void _on_Area2D_area_entered(Area2D area)
 	{
 		Inbounds = true;
-		GD.Print("Player collided with Food Submition Station");
+		
 
 	}
 	private void _on_Area2D_area_exited(Area2D area)
 {
 	Inbounds = false;
-		GD.Print("Player left Food Submition Station");
+		
 }
 	
 	public override void _PhysicsProcess(float delta){
 		if (Input.IsActionPressed("interact") && Inbounds)
 		{
 			Player player = (Player) area.GetParent();
-			GD.Print("Player collided with Food Submition Station");
+			
 			FoodItem item = player.HeldItem;
 			if(item != FoodItem.NONE) { // Don't grab item from empty inventory
 				inventory.Add(item);
@@ -56,7 +57,7 @@ public class FoodSubmitStation : Area2D
 				
 				
 				
-				player.HeldItem = FoodItem.NONE;
+				
 			}
 		}
 	}
@@ -67,14 +68,14 @@ public class FoodSubmitStation : Area2D
 	private void SubmitFood() {
 		GD.Print("Submitting Food");
 
-		if (HeldFoodName == FoodItem.HAMBURGER.Name) {
+		if (HeldFoodName == FoodItem.HAMBURGER.Name) { //Just add Else-if's for each food item that can get submitted
 
-			playerScore.increaseScore(1);
-
+			playerScore.increaseScore(1); //Custom scores per item submitted
+			player.HeldItem = FoodItem.NONE;
 		} else if (HeldFoodName == FoodItem.BUN.Name){
 
 			playerScore.increaseScore(1);
-
+			player.HeldItem = FoodItem.NONE;
 		}
 
 
