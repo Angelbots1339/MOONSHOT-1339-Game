@@ -28,33 +28,33 @@ public class Score : Node2D
         scoreLabel.Set("Score: 0", scoreLabel);
     }
 
-    //Update the current score
+    //Get the score
     public int getScore()
     {
         return myscore;
     }
-
-    public void setScore(int x)
+    //Set the score to the specified value
+    public static void setScore(int x)
     {
         myscore = x;
         
     }
-
-    public void increaseScore(int x)
+    //Increase the score by the specified value
+    public static void increaseScore(int x)
     {
         myscore += x;
     }
-
-    public void decreaseScore(int x)
+    //Decrease the score by the specified value
+    public static void decreaseScore(int x)
     {
         myscore -= x;
     }
-
-    public void updateScore()
+    //Update the HUD with the latest score
+    public static void updateScore()
     {
         scoreLabel.Text = "Score: " + myscore;
     }
-
+    //Turn the score into a string for the HUD
     public String toString()
     {
         int score = this.getScore();
