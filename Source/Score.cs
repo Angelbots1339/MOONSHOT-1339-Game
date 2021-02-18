@@ -34,23 +34,23 @@ public class Score : Node2D
         return myscore;
     }
     //Set the score to the specified value
-    public static void setScore(int x)
+    public void setScore(int x)
     {
         myscore = x;
         
     }
     //Increase the score by the specified value
-    public static void increaseScore(int x)
+    public void increaseScore(int x)
     {
         myscore += x;
     }
     //Decrease the score by the specified value
-    public static void decreaseScore(int x)
+    public void decreaseScore(int x)
     {
         myscore -= x;
     }
     //Update the HUD with the latest score
-    public static void updateScore()
+    public void updateScore()
     {
         scoreLabel.Text = "Score: " + myscore;
     }
