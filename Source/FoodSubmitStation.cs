@@ -19,8 +19,7 @@ public class FoodSubmitStation : Area2D
 	private Boolean Inbounds;
 	private string HeldFoodName;
 
-
-	private Player; 
+	private Player player; 
 
 	public override void _Ready() {
 		area = (Area2D)GetTree().Root.GetNode("Node2D").GetNode("Player").GetNode("InteractCollision");
