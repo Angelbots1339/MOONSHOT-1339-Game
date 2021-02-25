@@ -16,10 +16,12 @@ public class CookingStation : Area2D
 	public string[] inputRecipies = {};
 	public Recipe[] recipies;
 	private List<FoodItem> inventory = new List<FoodItem>();
-	public Area2D area;
-	public Boolean Inbounds;
+	private Area2D playerArea;
+    private PopupDialog popup;
+	private Boolean Inbounds;
 	public override void _Ready() {
-		area = (Area2D)GetTree().Root.GetNode("Node2D").GetNode("Player").GetNode("InteractCollision");
+		playerArea = (Area2D)GetTree().Root.GetNode("Node2D").GetNode("Player").GetNode("InteractCollision");
+        popup = GetNode<CanvasLayer>("CanvasLayer").GetNode<PopupDialog>("PopupDialog");
 		recipies = new Recipe[inputRecipies.Length];
 		for (int i = 0; i < inputRecipies.Length; i++ ){
 			recipies[i] = new Recipe(inputRecipies[i]);
@@ -31,22 +33,34 @@ public class CookingStation : Area2D
 	///</summary>
 	public void _on_Area2D_area_entered(Area2D area)
 	{
-		Inbounds = true;
+		if(area.Equals(playerArea)) {
+            Inbounds = true;
+            popup.RectGlobalPosition = this.GlobalPosition;
+            popup.Visible = true;
+        }
 	}
 	private void _on_Area2D_area_exited(Area2D area)
 	{
-		Inbounds = false;
+		if(area.Equals(playerArea)) {
+            Inbounds = false;
+            popup.Visible = false;
+        }
 	}
 	
 	public override void _PhysicsProcess(float delta){
 		if (Input.IsActionPressed("interact") && Inbounds)
 		{
-			Player player = (Player) area.GetParent();
+			Player player = (Player) playerArea.GetParent();
 			FoodItem item = player.HeldItem;
 			if(item != FoodItem.NONE) { // Don't grab item from empty inventory
 				inventory.Add(item);
 				player.HeldItem = FoodItem.NONE;
 				CheckOutput();	
+
+                // Update inventory
+                string text = "";
+                foreach(FoodItem i in inventory) text += i.Name + '\n';
+                popup.GetNode<Label>("Label").Text = text;
 			}
 		}
 	}

@@ -23,6 +23,26 @@ script = ExtResource( 3 )
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )
 
+[node name="CanvasLayer" type="CanvasLayer" parent="Area2D"]
+
+[node name="PopupDialog" type="PopupDialog" parent="Area2D/CanvasLayer"]
+margin_left = 436.613
+margin_top = 258.0
+margin_right = 500.613
+margin_bottom = 322.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="Area2D/CanvasLayer/PopupDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Test text"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
