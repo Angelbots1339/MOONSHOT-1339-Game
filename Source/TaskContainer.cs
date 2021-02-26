@@ -54,9 +54,9 @@ public class TaskContainer : HBoxContainer
 	// Call this whenever task list is updated
 	private void UpdateTaskList() {
 		for (int task = 0; task < Tasks.Count; task++) {
-			GD.Print(todoFoods.Count);
-			GD.Print(task);
-			GD.Print(Tasks.Count);
+			//GD.Print(todoFoods.Count);
+			//GD.Print(task);
+			//GD.Print(Tasks.Count);
 			if(todoFoods[task] == FoodItem.NONE) { // If index empty
 				for(int next = task + 1; next < Tasks.Count; next++) { // Check array
 					if(todoFoods[next] != FoodItem.NONE) {

@@ -47,7 +47,7 @@ position = Vector2( 760.811, 488.361 )
 position = Vector2( 533.809, 620.657 )
 
 [node name="Area2D" parent="CookingStation" index="0"]
-inputRecipies = PoolStringArray( "Hamburger+Bun=Hamburger:Fried" )
+outputs = PoolStringArray( "Bun", "Cheese", "Hamburger", "Lettuce", "Patty", "Tomato" )
 
 [node name="TrashStation" parent="." instance=ExtResource( 8 )]
 position = Vector2( 698.718, 730.473 )

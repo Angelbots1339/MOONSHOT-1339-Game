@@ -29,14 +29,14 @@ public class Recipe {
 
 	private void convertToFood() {
 		OutputFoodItem = FoodItem.getFromName(Output);
-		GD.Print("Output: " + OutputFoodItem.Name);
+		//GD.Print("Output: " + OutputFoodItem.Name);
 		foreach(string i in Inputs) {
 			InputFoodItems.Add(FoodItem.getFromName(i));
-			GD.Print("Input: " + FoodItem.getFromName(i).Name);
+			//GD.Print("Input: " + FoodItem.getFromName(i).Name);
 		}
 	}
 
-	public string[] readRecipiesFromFile(string filePath) {
+	public static string[] readRecipiesFromFile(string filePath) {
 		string lines = System.IO.File.ReadAllText(filePath, Encoding.UTF8);
 		return lines.Split('\n');
 	}
@@ -48,6 +48,30 @@ public class Recipe {
 		}
 	}
 
+    public static Recipe searchFileForRecipe(string output) {
+        Recipe recipe = new Recipe(1);
+        FoodItem foodItem = FoodItem.getFromName(output);
+        foreach(string line in readRecipiesFromFile(recipePath)) {
+            Recipe current = new Recipe(line);
+            if(current.OutputFoodItem == foodItem) recipe = current; 
+        }
+
+        return recipe;
+    }
+
+    public override bool Equals(object obj)
+    {
+        Recipe recipe;
+        if(obj is Recipe) {recipe = (Recipe) obj;}
+        else return false;
+        if(this.InputFoodItems == recipe.InputFoodItems &&
+           this.OutputFoodItem == recipe.OutputFoodItem &&
+           this.CookingStationType == recipe.CookingStationType) return true;
+        else return false;
+    }
+
+    
+
 	public Recipe(string toParse) {
 		InputFoodItems = new List<FoodItem>();
 		parseString(toParse);
@@ -56,7 +80,7 @@ public class Recipe {
 
 	public Recipe(int line) {
 		InputFoodItems = new List<FoodItem>();
-		parseString(readRecipiesFromFile(recipePath)[line]);
+		parseString(readRecipiesFromFile(recipePath)[line - 1]);
 		convertToFood();
 	}
 }

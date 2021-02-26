@@ -1,1 +1,6 @@
-Hamburger=Hamburger:Grill
+Bun=Cheese:Grill
+Cheese=Hamburger:Grill
+Hamburger=Lettuce:Grill
+Lettuce=Patty:Grill
+Patty=Tomato:Grill
+Tomato=Bun:Grill

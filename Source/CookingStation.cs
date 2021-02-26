@@ -11,9 +11,9 @@ public class CookingStation : Area2D
 {
 	[Export]
 	/*
-	Format: "input1+input2=output:cookingtype"
+	Use the desired output food item name to find the correct recipe
 	*/
-	public string[] inputRecipies = {};
+	public string[] outputs = {};
 	public Recipe[] recipies;
 	private List<FoodItem> inventory = new List<FoodItem>();
 	private Area2D playerArea;
@@ -22,9 +22,9 @@ public class CookingStation : Area2D
 	public override void _Ready() {
 		playerArea = (Area2D)GetTree().Root.GetNode("Node2D").GetNode("Player").GetNode("InteractCollision");
         popup = GetNode<CanvasLayer>("CanvasLayer").GetNode<PopupDialog>("PopupDialog");
-		recipies = new Recipe[inputRecipies.Length];
-		for (int i = 0; i < inputRecipies.Length; i++ ){
-			recipies[i] = new Recipe(inputRecipies[i]);
+		recipies = new Recipe[outputs.Length];
+		for (int i = 0; i < outputs.Length; i++ ){
+			recipies[i] = Recipe.searchFileForRecipe(outputs[i]);
 		}
 	}
 
@@ -79,18 +79,13 @@ public class CookingStation : Area2D
 				continue;
 			}
 
-			// Fill placeholders 
-			List<FoodItem> placeholders = new List<FoodItem>();
-			foreach(FoodItem input in inputs) {
-				placeholders.Add(input);
-			}
 			List<FoodItem> tempInventory = inventory;	
 
 			// Check if temp inventory can create recipe
 			bool complete = true;
-			for(int recipeIndex = 0; recipeIndex < placeholders.Count && complete; recipeIndex++) {
-				if(tempInventory.Contains(placeholders[recipeIndex])) {
-					tempInventory.Remove(placeholders[recipeIndex]);
+			for(int recipeIndex = 0; recipeIndex < inputs.Count && complete; recipeIndex++) {
+				if(tempInventory.Contains(inputs[recipeIndex])) {
+					tempInventory.Remove(inputs[recipeIndex]);
 				} else {
 					complete = false;
 				}
@@ -100,7 +95,8 @@ public class CookingStation : Area2D
 				inventory = tempInventory;
                 Player player = (Player) playerArea.GetParent();
                 player.HeldItem = output;
-                Inbounds = false;
+                Inbounds = false; // Player HAS TO step out before next recipe can be created
+                GD.Print("Gave player " + output.Name);
 			}
 		}
 	}
