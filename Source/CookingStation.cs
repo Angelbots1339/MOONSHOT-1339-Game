@@ -98,8 +98,9 @@ public class CookingStation : Area2D
 
 			if(complete) {
 				inventory = tempInventory;
-				GetParent().GetNode<Sprite>("Sprite").Texture = output.GetTexture();
-				GD.PushWarning("Unimplemented method to create item goes here");
+                Player player = (Player) playerArea.GetParent();
+                player.HeldItem = output;
+                Inbounds = false;
 			}
 		}
 	}

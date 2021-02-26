@@ -37,7 +37,6 @@ __meta__ = {
 [node name="Label" type="Label" parent="Area2D/CanvasLayer/PopupDialog"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "Test text"
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
